@@ -1,0 +1,88 @@
+---
+import { site } from '../config/site';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl site-header-chrome"
+>
+  <div class="mx-auto max-w-8xl px-6 sm:px-8 lg:px-10 h-14 flex items-center justify-between">
+    <a href={base} class="flex items-center gap-2.5 group" aria-label="Read Later home">
+      {/* Dark + light app icons stacked. Both render at the same spot;
+          the theme-aware mask fades the wrong one out as <html> flips. */}
+      <span class="header-icon relative inline-block w-[30px] h-[30px]">
+        <img
+          src={`${base}images/icon-192.png`}
+          alt=""
+          width="30"
+          height="30"
+          class="header-icon-img show-on-dark absolute inset-0 w-[30px] h-[30px] rounded-[7px]"
+        />
+        <img
+          src={`${base}images/icon-192-light.png`}
+          alt=""
+          width="30"
+          height="30"
+          class="header-icon-img show-on-light absolute inset-0 w-[30px] h-[30px] rounded-[7px]"
+          aria-hidden="true"
+        />
+      </span>
+      <span class="header-wordmark text-[17px] font-semibold tracking-[-0.015em] text-pouch-text group-hover:text-pouch-red transition-colors">
+        Read Later
+      </span>
+    </a>
+    <nav class="flex items-center gap-1 text-[13.5px]">
+      <a href={`${base}#features`} class="header-link hidden sm:inline-flex px-3 py-2 text-pouch-textSoft hover:text-pouch-text">Features</a>
+      <a href={`${base}support`} class="header-link hidden md:inline-flex px-3 py-2 text-pouch-textSoft hover:text-pouch-text">Support</a>
+      <a
+        href={site.appStoreUrl}
+        target={isExternalAppStoreUrl ? '_blank' : undefined}
+        rel={isExternalAppStoreUrl ? 'noopener' : undefined}
+        class="header-cta ml-1 inline-flex items-center gap-1.5 rounded-full bg-pouch-card ring-1 ring-white/10 px-4 py-2 text-[13.5px] font-medium text-white hover:bg-pouch-cardHover transition-colors"
+      >
+        Download
+      </a>
+    </nav>
+  </div>
+</header>
+
+<div aria-hidden="true" class="h-14"></div>
+
+<style is:global>
+  /* Header chrome cross-fades with the global theme (the same way every
+     other themed surface does). The blurred bar reads as the same surface
+     as the page beneath it in both modes. */
+  .site-header-chrome {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition:
+      background-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
+      border-bottom-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  :root.is-light .site-header-chrome {
+    background-color: rgba(243, 242, 247, 0.7);
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+  }
+
+  /* Theme-aware app icon crossfade in the header. Both icons sit in the
+     same absolute box; only one is visible per theme. The transition
+     duration matches the rest of the global theme flip so the icon
+     swap feels like part of the same gesture. */
+  .header-icon-img {
+    transition: opacity 280ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    will-change: opacity;
+  }
+  .header-icon-img.show-on-dark { opacity: 1; }
+  .header-icon-img.show-on-light { opacity: 0; }
+  :root.is-light .header-icon-img.show-on-dark { opacity: 0; }
+  :root.is-light .header-icon-img.show-on-light { opacity: 1; }
+
+  /* Suppress the icon swap during the boot guard so a deep-link to a
+     light section doesn't visibly flip the icon on first paint. */
+  html.boot .header-icon-img { transition: none !important; }
+</style>

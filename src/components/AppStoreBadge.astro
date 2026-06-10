@@ -1,0 +1,67 @@
+---
+/**
+ * Official "Download on the App Store" badge.
+ *
+ * Renders Apple's unmodified black badge artwork at
+ * `/images/download-on-the-app-store.svg` (sourced from
+ * developer.apple.com). Per Apple's App Store marketing guidelines:
+ *  - The badge must be used as-is (no rotation, recolour, animation).
+ *  - Minimum onscreen height is 40px; we default to 48px.
+ *  - Clear space equal to one-quarter the badge height must surround it
+ *    (we leave this to the consuming layout).
+ *
+ * @see https://developer.apple.com/app-store/marketing/guidelines/
+ */
+import { site } from '../config/site';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+export interface Props {
+  href?: string;
+  height?: number;
+  className?: string;
+}
+
+const {
+  href = site.appStoreUrl,
+  height = 48,
+  className = '',
+} = Astro.props;
+
+const aspectRatio = 119.66407 / 40;
+const width = Math.round(height * aspectRatio * 100) / 100;
+const isExternal = href.startsWith('http');
+---
+
+<a
+  href={href}
+  class={`app-store-badge inline-flex shrink-0 ${className}`}
+  aria-label="Download Read Later on the App Store"
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener' : undefined}
+>
+  <img
+    src={`${base}images/download-on-the-app-store.svg`}
+    alt="Download on the App Store"
+    width={width}
+    height={height}
+    style={`height:${height}px;width:auto;`}
+    decoding="async"
+  />
+</a>
+
+<style is:global>
+  .app-store-badge {
+    transition: opacity 200ms ease-out;
+  }
+  .app-store-badge:hover {
+    opacity: 0.85;
+  }
+  .app-store-badge:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
+</style>

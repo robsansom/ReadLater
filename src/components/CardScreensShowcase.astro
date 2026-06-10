@@ -1,0 +1,94 @@
+---
+/**
+ * CardScreensShowcase — Timed CSS-only crossfading screenshots centered on a black background.
+ * No phone bezel mockup, no dot grid. Just clean, raw product screens.
+ */
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+// All available card screenshots, with the curated, human-named shots
+// interleaved through the raw captures so recognisable cards are
+// spread across the loop rather than clustered. The Hampstead Heath
+// shot is intentionally excluded.
+const screens = [
+  { stem: 'card-detail-living-room', alt: 'Read Later bookmark of Living Room Inspiration' },
+  { stem: 'card-detail-13-32-02', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-eames-archive', alt: 'Read Later bookmark of Eames Archive: Furniture Notes' },
+  { stem: 'card-detail-13-32-10', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-lisbon-travel', alt: 'Read Later bookmark of Lisbon Long Weekend: Alfama, Tiles, and Sea Air' },
+  { stem: 'card-detail-13-32-18', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-sourdough-recipe', alt: 'Read Later bookmark of A Slow Sunday Sourdough Recipe' },
+  { stem: 'card-detail-13-32-26', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-athens-tavernas', alt: 'Read Later bookmark of Athens Tavernas for the First Night' },
+  { stem: 'card-detail-13-32-47', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-bao-london', alt: 'Read Later bookmark of BAO: Quick Soho Dinner Before a Film' },
+  { stem: 'card-detail-13-32-55', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-manteca-pasta', alt: 'Read Later bookmark of Manteca: Handmade Pasta in Shoreditch' },
+  { stem: 'card-detail-13-33-07', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-paris-hotels', alt: 'Read Later bookmark of Paris Hotel Shortlist Near the Left Bank' },
+  { stem: 'card-detail-13-33-13', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-tate-modern', alt: 'Read Later bookmark of Tate Modern and a South Bank Walk' },
+  { stem: 'card-detail-13-33-23', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-v-and-a-exhibition', alt: 'Read Later bookmark of a V&A museum exhibition' },
+  { stem: 'card-detail-13-33-40', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-13-33-45', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-13-34-19', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-13-34-29', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-13-34-43', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-13-35-06', alt: 'A saved bookmark card in Read Later' },
+  { stem: 'card-detail-13-35-11', alt: 'A saved bookmark card in Read Later' },
+];
+
+// Each screen owns a 3s window; the full loop is screens × 3s. The
+// crossfade keyframe is generated from this count so the timing stays
+// correct automatically whenever the screens list grows or shrinks —
+// no more hand-tuned percentages to keep in sync.
+const screenWindowSeconds = 3;
+const fadeSeconds = 0.5;
+const cycleSeconds = screens.length * screenWindowSeconds;
+
+const pct = (seconds: number) =>
+  `${((seconds / cycleSeconds) * 100).toFixed(3)}%`;
+
+const crossfadeKeyframes = `@keyframes card-screen-crossfade {
+  0% { opacity: 0; }
+  ${pct(fadeSeconds)} { opacity: 1; }
+  ${pct(screenWindowSeconds - fadeSeconds)} { opacity: 1; }
+  ${pct(screenWindowSeconds)} { opacity: 0; }
+  100% { opacity: 0; }
+}`;
+---
+
+<style is:global set:html={crossfadeKeyframes}></style>
+
+<div class="card-screens-showcase reveal-image showcase-device relative mx-auto md:mx-0 md:mr-auto md:ml-0" data-side="left">
+  {/* Solid black container matching the 1024x906 layout aspect ratio of other showcases */}
+  <div class="device-theme-mask show-on-dark relative w-full aspect-[1024/906] bg-black rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex items-center justify-center">
+    
+    {/* Floating screenshot container with custom responsive border radius & clean shadow (increased by another 5%) */}
+    <div 
+      class="relative w-[37.08%] h-[88.91%] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] border border-white/10"
+      style="border-radius: 10.54% / 4.97%;"
+    >
+      <div class="screens-container w-full h-full">
+        {screens.map((screen, index) => (
+          <picture
+            class="cycling-screen"
+            style={`animation: card-screen-crossfade ${cycleSeconds}s infinite; animation-delay: -${index * screenWindowSeconds}s;`}
+          >
+            <source srcset={`${base}images/card-screens/${screen.stem}.webp`} type="image/webp" />
+            <img
+              src={`${base}images/card-screens/${screen.stem}.png`}
+              alt={screen.alt}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </picture>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

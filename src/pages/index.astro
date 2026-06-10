@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Showcase from '../components/Showcase.astro';
+import TabletShowcase from '../components/TabletShowcase.astro';
+import SplitHeadline from '../components/SplitHeadline.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import Testimonials from '../components/Testimonials.astro';
+---
+
+<Base
+  title="Read Later - Save anything. Find everything."
+  description="Read Later is a calm, Apple-native place to save links, videos, recipes and ideas. For iPhone & iPad."
+>
+  <Hero />
+
+  <Showcase
+    eyebrow="Bookmarks"
+    headline="Save it now,"
+    headlineAccent="find it later."
+    image="bookmark-cards"
+    alt="The Read Later iPhone app showing the dark-mode Bookmarks list of saved links, with photos, titles and tags."
+    body="One tap from any app saves the link with its title, thumbnail and source. Search, filter and find your way back, fast."
+    device="right"
+    themeImageMode="dark"
+  />
+
+  {/* New "Cards" showcase. Sits inside the dark stretch (before the
+      theme sentinel flips the page to light) so it keeps the same dark
+      tone as Bookmarks above it, with the device on the opposite side
+      to create visual rhythm. */}
+  <Showcase
+    eyebrow="Bookmarks"
+    headline="Beautiful bookmarks."
+    headlineAccent="Yours to shape."
+    image="card-screens"
+    alt="The Read Later iPhone app showing detail cards for different bookmarked links, cycling through recipes, travel planning, walks, design ideas, and restaurants."
+    body="Every bookmark lands as a full card with its hero image, source and notes. Edit the title, swap the thumbnail, retag it, or generate a new cover with AI - every part of the card is yours to shape."
+    device="left"
+    themeImageMode="dark"
+  />
+
+  {/* Tablet moment. The `#theme-sentinel` sits at the vertical midpoint
+      of the iPad image so the page-wide theme flip and the iPad screen
+      cross-fade land in the same beat. */}
+  <TabletShowcase
+    eyebrow="iPad"
+    headline="Bigger screen,"
+    headlineAccent="bigger layout."
+    body="Redesigned for iPad, not just stretched to fit. See more of your library at once, with collections, previews and saved links arranged for the bigger screen."
+    imageDark="ipad-dark"
+    imageLight="ipad-light"
+    altDark="The Read Later iPad app in dark mode, showing a Collections home with Quick Jump shortcuts, Recently Added cards and Favorites."
+    altLight="The Read Later iPad app in light mode, showing a Collections home with Quick Jump shortcuts, Recently Added cards and Favorites."
+  />
+
+  <Showcase
+    eyebrow="Collections"
+    headline="Share"
+    headlineAccent="collections."
+    image="collection-cards"
+    alt="Three collection share cards fanning out, showing how bookmarked links can be grouped and shared through iCloud."
+    body="Group bookmarks into trips, projects, wishlists or moodboards. Share a whole collection through iCloud and plan together."
+    device="right"
+    themeImageMode="light"
+  />
+
+  <SplitHeadline
+    eyebrow="Privacy"
+    first="Private,"
+    second="by default."
+    body="No account. No tracking. No third-party SDKs. What happens in Read Later stays on your iPhone, your iPad, and your own iCloud."
+  />
+
+  <BentoGrid />
+
+  <Testimonials />
+
+  {/* Scroll-triggered global theme inversion. Toggles `is-light` on
+      <html> when #theme-sentinel above crosses the viewport midline.
+      Lives inside <Base> so the script is rendered inside <body>. */}
+  <script is:inline>
+    (() => {
+      const root = document.documentElement;
+      root.classList.add('boot');
+
+      const init = () => {
+        const sentinel = document.getElementById('theme-sentinel');
+        if (!sentinel) {
+          root.classList.remove('boot');
+          return;
+        }
+
+        const update = () => {
+          const trigger = window.innerHeight * 0.5;
+          const y = sentinel.getBoundingClientRect().top;
+          root.classList.toggle('is-light', y < trigger);
+        };
+
+        update();
+        // Clear the boot guard on the next frame so subsequent flips animate.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => root.classList.remove('boot'));
+        });
+
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</Base>
