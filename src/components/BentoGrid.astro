@@ -138,7 +138,7 @@ const features: Feature[] = [
       Lightweight,&nbsp;<span class="text-dim">on purpose.</span>
     </h2>
 
-    <p class="reveal reveal-delay-2 mt-6 max-w-xl text-[16px] sm:text-[17px] leading-[1.55] text-pouch-textSoft">
+    <p class="reveal reveal-delay-2 mt-6 max-w-xl text-[16px] sm:text-[17px] 2xl:text-[19px] leading-[1.55] text-pouch-textSoft">
       Quiet on the outside, deeply capable underneath. The essentials are designed to feel obvious, fast and out of your way.
     </p>
 
@@ -200,7 +200,7 @@ const features: Feature[] = [
             <div
               class={[
                 'bento-visual',
-                f.layout === 'visual-top' && 'order-first flex justify-start',
+                f.layout === 'visual-top' && 'order-first flex justify-center',
                 f.layout === 'stacked' && 'mt-8 sm:mt-10 flex-1 flex items-end justify-center',
                 f.layout === 'overlay' && 'absolute inset-0',
                 f.layout === 'bottom-flush' && 'mt-8 flex-1 flex items-end justify-center -mb-6 sm:-mb-7',
@@ -242,23 +242,18 @@ const features: Feature[] = [
     transform: translateY(-6px);
   }
 
-  /* Share extension art should sit directly on the white card, aligned
-     more like the Figma comp and without the heavier floating treatment
-     that suited the older dark asset. */
+  /* Share extension art. The asset is cut square across its top edge
+     (the device continues out of frame), so it sits flush against the
+     tile's top edge — negative margin cancels the card padding and the
+     card's overflow-hidden crops it cleanly. Horizontally centred. */
   .bento-img--share {
     width: min(100%, 430px);
-    margin-top: -6px;
-    margin-left: 18px;
+    margin-top: -1.5rem; /* cancels p-6 */
     filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.10));
   }
-  :root.is-light .bento-img--share {
-    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.10));
-  }
-  @media (max-width: 640px) {
+  @media (min-width: 640px) {
     .bento-img--share {
-      width: min(100%, 388px);
-      margin-left: 0;
-      margin-top: -2px;
+      margin-top: -1.75rem; /* cancels sm:p-7 */
     }
   }
 

@@ -37,6 +37,19 @@
     letter-spacing: -0.032em;
     line-height: 0.92;
   }
+  /* On phones the display sizes wrap to several lines; the desktop
+     leading is too tight there, so open it up slightly. */
+  @media (max-width: 639px) {
+    .display {
+      line-height: 1.05;
+    }
+    .display-section {
+      line-height: 1.0;
+    }
+    .display-tighter {
+      line-height: 1.04;
+    }
+  }
   .text-dim {
     color: #FA3454;
   }
@@ -890,10 +903,18 @@ html.boot .site-header-chrome {
   width: min(100%, 52.625rem);
 }
 
+/* Sized down a notch for laptop-class viewports so the full device fits
+   on screen comfortably; very wide displays (large externals / 16"+)
+   get the original hero scale back. Mobile is handled below. */
 .card-screen-phone {
-  width: min(46%, 24rem);
+  width: min(46%, 20.5rem);
   aspect-ratio: 1033 / 2245;
   border-radius: 10.54% / 4.97%;
+}
+@media (min-width: 1728px) {
+  .card-screen-phone {
+    width: min(46%, 24rem);
+  }
 }
 
 @media (min-width: 768px) {
