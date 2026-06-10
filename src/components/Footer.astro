@@ -11,9 +11,11 @@ const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
 
 <footer class="relative bg-pouch-ink text-pouch-text border-t border-theme-soft">
   <div class="mx-auto max-w-8xl px-6 sm:px-8 lg:px-10 pt-24 sm:pt-32 pb-12">
-    <p class="reveal-eyebrow text-[12px] uppercase tracking-[0.22em] text-pouch-textMuted">A small, considered app</p>
-    <h2 class="reveal-lines mt-5 display-section text-[clamp(2.25rem,6vw,5rem)] text-balance">
-      <span class="reveal-line"><span>Save the link.&nbsp;<span class="text-dim">Close the tab.</span></span></span>
+    <p class="reveal-eyebrow text-[12px] uppercase tracking-[0.24em] text-pouch-textMuted">A small, considered app</p>
+    <h2 class="reveal-lines mt-6 sm:mt-7 display-section text-[clamp(2.25rem,6vw,5rem)] text-balance">
+      {/* Each sentence is kept on its own unbreakable run so narrow
+          screens wrap between the sentences, never mid-phrase. */}
+      <span class="reveal-line"><span><span class="whitespace-nowrap">Save the link.</span> <span class="text-dim whitespace-nowrap">Close the tab.</span></span></span>
     </h2>
     <div class="reveal reveal-delay-2 mt-12 sm:mt-16">
       <AppStoreBadge height={56} />
@@ -21,7 +23,7 @@ const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
 
     <div class="mt-20 sm:mt-24 pt-10 border-t border-theme-soft grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-10 text-[14px]">
       <div>
-        <p class="text-pouch-textMuted text-[12px] uppercase tracking-[0.16em]">Product</p>
+        <p class="text-pouch-textMuted text-[12px] uppercase tracking-[0.18em]">Product</p>
         <ul class="mt-4 space-y-2.5">
           <li><a href={`${base}#features`} class="hover:text-pouch-red transition-colors">Features</a></li>
           <li>
@@ -37,14 +39,14 @@ const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
         </ul>
       </div>
       <div>
-        <p class="text-pouch-textMuted text-[12px] uppercase tracking-[0.16em]">Company</p>
+        <p class="text-pouch-textMuted text-[12px] uppercase tracking-[0.18em]">Company</p>
         <ul class="mt-4 space-y-2.5">
           <li><a href={`${base}support`} class="hover:text-pouch-red transition-colors">Support</a></li>
           <li><a href={`mailto:${site.supportEmail}`} class="hover:text-pouch-red transition-colors">Contact</a></li>
         </ul>
       </div>
       <div>
-        <p class="text-pouch-textMuted text-[12px] uppercase tracking-[0.16em]">Legal</p>
+        <p class="text-pouch-textMuted text-[12px] uppercase tracking-[0.18em]">Legal</p>
         <ul class="mt-4 space-y-2.5">
           <li><a href={`${base}privacy`} class="hover:text-pouch-red transition-colors">Privacy</a></li>
           <li><a href={`${base}terms`} class="hover:text-pouch-red transition-colors">Terms</a></li>

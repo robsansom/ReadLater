@@ -134,7 +134,7 @@ const features: Feature[] = [
       Features
     </p>
 
-    <h2 class="mt-6 sm:mt-7 display-section text-[clamp(2.25rem,5.5vw,4.5rem)] text-balance max-w-[22ch]">
+    <h2 class="mt-6 sm:mt-7 display-section text-[clamp(2.25rem,6vw,5rem)] text-balance max-w-[22ch]">
       Lightweight,&nbsp;<span class="text-dim">on purpose.</span>
     </h2>
 
@@ -247,13 +247,19 @@ const features: Feature[] = [
      tile's top edge — negative margin cancels the card padding and the
      card's overflow-hidden crops it cleanly. Horizontally centred. */
   .bento-img--share {
-    width: min(100%, 430px);
-    margin-top: -1.5rem; /* cancels p-6 */
+    /* Bleeds edge-to-edge past the card padding (negative margins
+       cancel p-6/sm:p-7) so the cropped device reads as emerging from
+       the tile's top, and the art scales with the tile instead of
+       leaving a growing void when the row stretches on wide layouts. */
+    width: calc(100% + 3rem);
+    max-width: none;
+    margin: -1.5rem -1.5rem 0;
     filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.10));
   }
   @media (min-width: 640px) {
     .bento-img--share {
-      margin-top: -1.75rem; /* cancels sm:p-7 */
+      width: calc(100% + 3.5rem);
+      margin: -1.75rem -1.75rem 0;
     }
   }
 

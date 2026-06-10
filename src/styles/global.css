@@ -41,13 +41,13 @@
      leading is too tight there, so open it up slightly. */
   @media (max-width: 639px) {
     .display {
-      line-height: 1.05;
+      line-height: 1.1;
     }
     .display-section {
-      line-height: 1.0;
+      line-height: 1.05;
     }
     .display-tighter {
-      line-height: 1.04;
+      line-height: 1.08;
     }
   }
   .text-dim {
