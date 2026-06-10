@@ -21,7 +21,7 @@ export const site = {
   appStoreUrl: '#app-store',
 
   /** Address shown on legal pages and support contact CTAs. */
-  supportEmail: 'support@readlater.app',
+  supportEmail: 'support@getreadlater.com',
 
   /** Marketing display name used in headers, page titles and meta tags. */
   appName: 'Read Later',

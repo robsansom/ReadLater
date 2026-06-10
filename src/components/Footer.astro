@@ -40,7 +40,7 @@ const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
         <p class="text-pouch-textMuted text-[12px] uppercase tracking-[0.16em]">Company</p>
         <ul class="mt-4 space-y-2.5">
           <li><a href={`${base}support`} class="hover:text-pouch-red transition-colors">Support</a></li>
-          <li><a href="mailto:support@readlater.app" class="hover:text-pouch-red transition-colors">Contact</a></li>
+          <li><a href={`mailto:${site.supportEmail}`} class="hover:text-pouch-red transition-colors">Contact</a></li>
         </ul>
       </div>
       <div>

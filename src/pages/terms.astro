@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
 
 const lastUpdated = '21 May 2026';
-const supportEmail = 'support@readlater.app';
+const supportEmail = site.supportEmail;
 const appleEula = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 const appleMediaServices = 'https://www.apple.com/legal/internet-services/itunes/';
 const reportAProblem = 'https://reportaproblem.apple.com';
