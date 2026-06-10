@@ -3,11 +3,9 @@ import AppStoreBadge from './AppStoreBadge.astro';
 ---
 
 <section class="relative isolate overflow-hidden bg-pouch-ink text-pouch-text">
-  <div aria-hidden="true" class="absolute inset-0 grid-noise pointer-events-none"></div>
-
   {/* Bottom padding steps down on phones: with no device visual in the
       hero, full pb-24 + the next section's pt-24 reads as dead space. */}
-  <div class="relative mx-auto max-w-8xl px-6 sm:px-8 lg:px-10 pt-16 sm:pt-24 lg:pt-28 pb-12 sm:pb-32">
+  <div class="hero-inner relative mx-auto max-w-8xl px-6 sm:px-8 lg:px-10 pt-16 sm:pt-24 lg:pt-28 pb-12 sm:pb-32">
 
     <p class="text-[12px] uppercase tracking-[0.24em] text-pouch-textMuted">
       Read Later &middot; for iPhone &amp; iPad
@@ -26,7 +24,7 @@ import AppStoreBadge from './AppStoreBadge.astro';
       A beautifully simple place for the links, videos, recipes and ideas you want to find again.
     </p>
 
-    <div class="mt-10 sm:mt-12 flex flex-wrap items-center gap-5">
+    <div class="hero-actions mt-10 sm:mt-12 flex flex-wrap items-center gap-5">
       <AppStoreBadge height={52} />
       <span class="text-[13.5px] text-pouch-textMuted">
         For iPhone &amp; iPad

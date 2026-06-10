@@ -42,10 +42,19 @@
   }
 
   @media (max-width: 639px) {
+    .hero-inner {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
     .hero-headline {
-      font-size: clamp(3.35rem, 15.2vw, 4.15rem);
-      line-height: 0.88;
-      letter-spacing: -0.045em;
+      font-size: clamp(4rem, 18.1vw, 4.7rem) !important;
+      line-height: 0.82;
+      letter-spacing: -0.055em;
+    }
+    .hero-actions {
+      margin-top: 3.5rem;
     }
     .showcase-headline {
       font-size: clamp(3rem, 13.8vw, 3.8rem);
@@ -791,7 +800,8 @@ html.boot .site-header-chrome {
   }
 
   .card-screens-showcase {
-    width: calc(100% - 1rem);
+    width: 100%;
+    overflow: visible;
   }
 
   .bento-img--collections {
@@ -817,10 +827,22 @@ html.boot .site-header-chrome {
   width: min(100%, 52.625rem);
 }
 
+.card-screen-phone {
+  width: min(46%, 24rem);
+  aspect-ratio: 1033 / 2245;
+  border-radius: 10.54% / 4.97%;
+}
+
 @media (min-width: 768px) {
   .card-screens-showcase {
     width: 52.625rem;
     max-width: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .card-screen-phone {
+    width: min(76vw, 19rem);
   }
 }
 
@@ -844,4 +866,3 @@ html.boot .site-header-chrome {
   backface-visibility: hidden;
   will-change: opacity;
 }
-

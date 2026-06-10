@@ -64,13 +64,9 @@ const crossfadeKeyframes = `@keyframes card-screen-crossfade {
 <style is:global set:html={crossfadeKeyframes}></style>
 
 <div class="card-screens-showcase reveal-image showcase-device relative mx-auto md:mx-0 md:mr-auto md:ml-0" data-side="left">
-  {/* Solid black container matching the 1024x906 layout aspect ratio of other showcases */}
-  <div class="device-theme-mask show-on-dark relative w-full aspect-[1024/906] bg-black rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex items-center justify-center">
-    
-    {/* Floating screenshot container with custom responsive border radius & clean shadow (increased by another 5%) */}
+  <div class="device-theme-mask show-on-dark relative w-full flex items-center justify-center">
     <div 
-      class="relative w-[37.08%] h-[88.91%] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] border border-white/10"
-      style="border-radius: 10.54% / 4.97%;"
+      class="card-screen-phone relative overflow-hidden shadow-[0_28px_70px_-20px_rgba(0,0,0,0.9)]"
     >
       <div class="screens-container w-full h-full">
         {screens.map((screen, index) => (

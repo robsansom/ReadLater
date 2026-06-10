@@ -10,6 +10,7 @@
 type Layout = 'visual-top' | 'stacked' | 'overlay' | 'bottom-flush' | 'split';
 
 interface Feature {
+  mobileOrder?: string;
   span: string;
   eyebrow: string;
   title: string;
@@ -91,6 +92,7 @@ const features: Feature[] = [
     },
   },
   {
+    mobileOrder: 'order-6 md:order-none',
     span: 'md:col-span-2',
     eyebrow: 'Privacy',
     title: 'Private by default',
@@ -105,6 +107,7 @@ const features: Feature[] = [
     },
   },
   {
+    mobileOrder: 'order-5 md:order-none',
     span: 'md:col-span-4',
     eyebrow: 'Export',
     title: 'Export anytime. Portable, flexible and yours.',
@@ -152,6 +155,7 @@ const features: Feature[] = [
                 ? 'flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10'
                 : 'flex flex-col',
               f.accent ? 'bg-pouch-red text-white' : 'bento-tile',
+              f.mobileOrder ?? '',
               f.span,
             ].join(' ')}
           >
