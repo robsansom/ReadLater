@@ -200,7 +200,7 @@ const features: Feature[] = [
             <div
               class={[
                 'bento-visual',
-                f.layout === 'visual-top' && 'order-first flex justify-center',
+                f.layout === 'visual-top' && 'order-first flex justify-start',
                 f.layout === 'stacked' && 'mt-8 sm:mt-10 flex-1 flex items-end justify-center',
                 f.layout === 'overlay' && 'absolute inset-0',
                 f.layout === 'bottom-flush' && 'mt-8 flex-1 flex items-end justify-center -mb-6 sm:-mb-7',
@@ -242,14 +242,24 @@ const features: Feature[] = [
     transform: translateY(-6px);
   }
 
-  /* Share sheet widget: dark mock straight from the design, lifted with a
-     soft shadow so it reads on the dark tile too. */
+  /* Share extension art should sit directly on the white card, aligned
+     more like the Figma comp and without the heavier floating treatment
+     that suited the older dark asset. */
   .bento-img--share {
-    width: min(100%, 392px);
-    filter: drop-shadow(0 26px 45px rgba(0, 0, 0, 0.45));
+    width: min(100%, 430px);
+    margin-top: -6px;
+    margin-left: 18px;
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.10));
   }
   :root.is-light .bento-img--share {
-    filter: drop-shadow(0 26px 45px rgba(0, 0, 0, 0.22));
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.10));
+  }
+  @media (max-width: 640px) {
+    .bento-img--share {
+      width: min(100%, 388px);
+      margin-left: 0;
+      margin-top: -2px;
+    }
   }
 
   .bento-img--collections {
