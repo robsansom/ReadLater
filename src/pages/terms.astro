@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { site } from '../config/site';
 
-const lastUpdated = '21 May 2026';
+const lastUpdated = '10 June 2026';
 const supportEmail = site.supportEmail;
 const appleEula = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 const appleMediaServices = 'https://www.apple.com/legal/internet-services/itunes/';
@@ -15,7 +15,7 @@ const reportAProblem = 'https://reportaproblem.apple.com';
  */
 const tldr = [
   'Read Later is licensed to you for personal use on your Apple devices.',
-  'The free tier covers 50 saves; Plus is \u00a312.99/year or \u00a334.99 once for life.',
+  'Free and paid features, prices and availability are shown in the App before purchase.',
   'Apple takes payment, handles refunds and manages your subscription.',
   'Your saved content is yours - we don\u2019t access it, claim it or train AI on it.',
   'These terms are governed by the laws of England & Wales.',
@@ -33,11 +33,11 @@ const sections = [
   },
   {
     title: '3. Free and Plus',
-    body: `Read Later is free to start. The free tier lets you save up to 50 items, with full search, tags, notes and iCloud sync. Read Later Plus unlocks unlimited saves, unlimited Collections, and the ability to share Collections with other Apple users through iCloud.`,
+    body: `Read Later may offer free and paid features. The current limits and features are shown in the App and App Store listing. Paid features may include higher or unlimited limits and Collection sharing. Features can vary by device, operating-system version and territory.`,
   },
   {
     title: '4. Subscriptions and one-time purchase',
-    body: `Plus is offered two ways: a \u00a312.99/year auto-renewing subscription, or a \u00a334.99 one-time lifetime purchase. Payment is taken by Apple through your Apple ID at the point of purchase, and the same Apple ID is charged for renewals. Subscriptions automatically renew at the same price for the same term unless auto-renew is turned off at least 24 hours before the end of the current period. The renewal charge is taken within 24 hours before the end of the current period. You can manage or cancel a subscription at any time from iOS Settings \u203a your name \u203a Subscriptions. Lifetime is a single payment that does not recur. Any free trial period (if offered) automatically converts into a paid subscription at the end of the trial unless cancelled at least 24 hours before the trial ends; any unused portion of a free trial is forfeited when you buy a subscription.`,
+    body: `Plus may be offered as an auto-renewing subscription and/or a one-time purchase. The price, billing period, included features and any trial are displayed by Apple before you confirm a purchase and may vary by country or currency. Subscriptions renew automatically unless cancelled through your Apple account at least 24 hours before the end of the current period. Apple charges your account and manages cancellation. A one-time purchase does not recur and applies to the version and features described at the time of purchase; it is not a promise that the App or every online service will remain available forever.`,
   },
   {
     title: '5. Refunds',
@@ -46,7 +46,7 @@ const sections = [
   },
   {
     title: '6. Price changes',
-    body: `Prices may change over time. If a recurring subscription price changes, Apple will notify you and ask for renewed consent before the new price takes effect, as required by the Apple Media Services Terms and applicable consumer law. You may cancel at any time before that change applies.`,
+    body: `Prices may change. Apple will provide any notice or consent process required for subscription price changes. A new price does not affect a completed one-time purchase. You may cancel a subscription before a change takes effect, subject to Apple\u2019s applicable terms.`,
     link: { label: 'Apple Media Services Terms', href: appleMediaServices },
   },
   {
@@ -55,11 +55,11 @@ const sections = [
   },
   {
     title: '8. Sync and sharing',
-    body: `If you are signed in to iCloud, Read Later syncs your data through Apple\u2019s CloudKit using your own iCloud container. We do not operate the sync servers and we have no access to that data. Sharing a Collection uses CloudKit Sharing: you choose who to invite, and you can stop sharing at any time from inside the App. The participants you invite see only the Collection you share with them.`,
+    body: `If iCloud sync is available and enabled, Apple\u2019s CloudKit stores and synchronises App data under your Apple ID. Availability and recovery depend on your device, Apple ID, network connection and Apple\u2019s services. If you share a Collection, the people you select can access the shared content. You are responsible for choosing recipients and for content you contribute to a shared Collection.`,
   },
   {
     title: '9. Acceptable use',
-    body: `Please don\u2019t (a) try to reverse engineer, decompile or modify Read Later beyond what the law expressly permits or what the Apple EULA allows; (b) attempt to bypass App Store purchase or entitlement checks; (c) use Sharing to spam, harass, or distribute illegal content; or (d) use Read Later in any way that interferes with anyone else\u2019s use of it. We may suspend access for a serious breach.`,
+    body: `Please don\u2019t (a) reverse engineer, decompile or modify Read Later except where the law or Apple EULA expressly permits it; (b) bypass purchase or entitlement checks; (c) use sharing to spam, harass or distribute unlawful content; or (d) interfere with the App or another person\u2019s use of it. Where technically and legally possible, we may restrict access to affected features for a serious breach.`,
   },
   {
     title: '10. Third-party content',
@@ -67,7 +67,7 @@ const sections = [
   },
   {
     title: '11. Our intellectual property',
-    body: `The Read Later name, design, icons, source code, and brand are owned by us. The licence in section 2 does not transfer any rights in them to you. We don\u2019t mind if you mention the App or link to readlater.app in reviews, articles or social posts - please just don\u2019t imply that we endorse or sponsor your work without our written permission.`,
+    body: `The Read Later name, design, icons, source code and brand are owned by us or used under licence. The licence in section 2 does not transfer those rights to you. You may mention the App or link to getreadlater.com in reviews, articles or social posts, but must not imply our endorsement or sponsorship without permission.`,
   },
   {
     title: '12. Apple\u2019s role (Apple-Enabled Software)',
@@ -88,19 +88,19 @@ const sections = [
   },
   {
     title: '14. Limitation of liability',
-    body: `To the maximum extent permitted by law, our total liability to you for any claim arising out of or relating to these terms or your use of Read Later is limited to the greater of (a) the amount you paid us through the App Store in the 12 months before the claim or (b) £100. We are not liable for indirect, consequential or incidental loss, including lost data, lost profits or lost goodwill. Nothing in these terms excludes or limits our liability for death or personal injury caused by our negligence, for fraud, or for any liability that cannot legally be excluded.`,
+    body: `We are responsible for loss or damage that is a foreseeable result of our breach of these terms or failure to use reasonable care and skill. We are not responsible for loss that was not foreseeable, for business losses suffered by a consumer, or for failures caused by Apple, a network provider or a third-party website outside our reasonable control. Nothing in these terms excludes or limits liability where doing so would be unlawful, including liability for death or personal injury caused by negligence, fraud, or your statutory consumer rights.`,
   },
   {
     title: '15. Termination',
-    body: `These terms apply for as long as you use the App. You can stop using Read Later at any time by deleting it. We may suspend access if you materially breach these terms. Your saved content remains on your device and in your own iCloud regardless - we have no power to delete it from there.`,
+    body: `These terms apply while you use the App. You can stop using it at any time by deleting it and managing any subscription through Apple. We may stop providing or updating the App, but this does not remove rights you already have under consumer law. Deleting the App may not delete content retained in iCloud; use the App and Apple\u2019s settings to manage that data.`,
   },
   {
     title: '16. Changes',
-    body: `We may update these terms from time to time. The date at the top of this page will reflect any change, and material changes will be flagged in the App\u2019s release notes or on the website. Continued use of Read Later after a change indicates acceptance of the updated terms.`,
+    body: `We may update these terms for legal, security or product reasons. We will update the date above and give reasonable notice of material changes where practicable. Changes will not retrospectively remove rights relating to a purchase already made. If you do not accept a material change, you may stop using the App and cancel any subscription through Apple.`,
   },
   {
     title: '17. Governing law and jurisdiction',
-    body: `These terms are governed by the laws of England & Wales. Disputes will be heard in the courts of England & Wales, except that consumers may bring claims in the courts of their place of residence to the extent required by local law. We don\u2019t require arbitration and we don\u2019t waive your right to bring small-claims or class actions where that right is protected by law.`,
+    body: `These terms are governed by the laws of England and Wales. If you are a consumer resident elsewhere, you also retain any mandatory protections provided by the law of your home country. You may bring proceedings in the courts available to you under applicable consumer law.`,
   },
   {
     title: '18. Contact',
