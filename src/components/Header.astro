@@ -64,9 +64,24 @@ const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
       background-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1),
       border-bottom-color 280ms cubic-bezier(0.4, 0.0, 0.2, 1);
   }
-  :root.is-light .site-header-chrome {
+  :root.is-light .site-header-chrome,
+  :root.header-on-light .site-header-chrome {
     background-color: rgba(243, 242, 247, 0.7);
     border-bottom-color: rgba(0, 0, 0, 0.06);
+  }
+  :root.header-on-dark .site-header-chrome {
+    background-color: rgba(0, 0, 0, 0.72);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+  }
+  :root.header-on-light .header-wordmark,
+  :root.header-on-light .header-link {
+    color: #1A1816;
+  }
+  :root.header-on-dark .header-wordmark {
+    color: #F8F7FA;
+  }
+  :root.header-on-dark .header-link {
+    color: #C8C5CC;
   }
 
   /* Theme-aware app icon crossfade in the header. Both icons sit in the
@@ -79,8 +94,12 @@ const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
   }
   .header-icon-img.show-on-dark { opacity: 1; }
   .header-icon-img.show-on-light { opacity: 0; }
-  :root.is-light .header-icon-img.show-on-dark { opacity: 0; }
-  :root.is-light .header-icon-img.show-on-light { opacity: 1; }
+  :root.is-light .header-icon-img.show-on-dark,
+  :root.header-on-light .header-icon-img.show-on-dark { opacity: 0; }
+  :root.is-light .header-icon-img.show-on-light,
+  :root.header-on-light .header-icon-img.show-on-light { opacity: 1; }
+  :root.header-on-dark .header-icon-img.show-on-dark { opacity: 1; }
+  :root.header-on-dark .header-icon-img.show-on-light { opacity: 0; }
 
   /* Suppress the icon swap during the boot guard so a deep-link to a
      light section doesn't visibly flip the icon on first paint. */

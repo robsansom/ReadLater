@@ -53,8 +53,8 @@ const bodyAlignClass = device === 'right' ? 'md:ml-auto' : '';
 ---
 
 <section class="relative overflow-hidden bg-pouch-ink text-pouch-text">
-  <div class="relative mx-auto max-w-8xl px-6 sm:px-8 lg:px-10 pt-24 sm:pt-32 pb-24 sm:pb-32">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 lg:gap-20 items-center">
+  <div class="showcase-section-inner relative mx-auto max-w-8xl px-6 sm:px-8 lg:px-10 pt-24 sm:pt-32 pb-24 sm:pb-32">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-12 md:gap-16 lg:gap-20 items-center">
       <div class={`md:col-span-5 lg:col-span-5 relative z-10 ${copyOrder} ${textAlignClass}`}>
         <p class="reveal-eyebrow text-[12px] uppercase tracking-[0.24em] text-pouch-textMuted">
           {eyebrow}
@@ -62,7 +62,7 @@ const bodyAlignClass = device === 'right' ? 'md:ml-auto' : '';
 
         {/* Static heading — the dramatic line-mask reveal is reserved
             for the single pinned anchor moment + the footer sign-off. */}
-        <h2 class="mt-6 sm:mt-7 display-section text-[clamp(2.25rem,6vw,5rem)] text-balance">
+        <h2 class="showcase-headline mt-6 sm:mt-7 display-section text-[clamp(2.25rem,6vw,5rem)] text-balance">
           <span class="block">{headline}</span>
           {headlineAccent && (
             <span class="block text-dim">{headlineAccent}</span>

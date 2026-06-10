@@ -135,6 +135,21 @@ function init() {
     heroIcon.addEventListener('mouseleave', () => heroIcon.classList.remove('is-fanned'));
   }
 
+  const mobileCardStacks = document.querySelectorAll<HTMLElement>(
+    '.pouch-cards-stack-wrapper, .collection-cards-stack-wrapper',
+  );
+  if (mobileCardStacks.length && !reduced && 'IntersectionObserver' in window) {
+    const stackIO = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          entry.target.classList.toggle('is-fanned', entry.isIntersecting);
+        }
+      },
+      { threshold: 0.55 },
+    );
+    mobileCardStacks.forEach((stack) => stackIO.observe(stack));
+  }
+
   // Converge headline observer.
   //
   // One-shot, intersection-triggered. When a `.converge-statement`

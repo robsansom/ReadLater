@@ -92,6 +92,16 @@ import BentoGrid from '../components/BentoGrid.astro';
           const trigger = window.innerHeight * 0.5;
           const y = sentinel.getBoundingClientRect().top;
           root.classList.toggle('is-light', y < trigger);
+
+          const header = document.getElementById('site-header');
+          if (header) {
+            const sampleY = Math.min(header.getBoundingClientRect().bottom + 2, window.innerHeight - 1);
+            const surface = document.elementFromPoint(window.innerWidth / 2, sampleY)?.closest('section, footer');
+            const surfaceIsLight = root.classList.contains('is-light')
+              && surface?.classList.contains('bg-pouch-ink');
+            root.classList.toggle('header-on-light', Boolean(surfaceIsLight));
+            root.classList.toggle('header-on-dark', !surfaceIsLight);
+          }
         };
 
         update();
