@@ -45,8 +45,14 @@ const screens = [
 // crossfade keyframe is generated from this count so the timing stays
 // correct automatically whenever the screens list grows or shrinks —
 // no more hand-tuned percentages to keep in sync.
+//
+// The fades deliberately OVERLAP: a screen stays fully opaque to the
+// end of its window and fades out during the first `fadeSeconds` of
+// the NEXT screen's window, exactly while that screen fades in. With
+// linear timing the two opacities always sum to 1, so the stack never
+// dips to the black background between screens (the old "flash").
 const screenWindowSeconds = 3;
-const fadeSeconds = 0.5;
+const fadeSeconds = 0.75;
 const cycleSeconds = screens.length * screenWindowSeconds;
 
 const pct = (seconds: number) =>
@@ -55,8 +61,8 @@ const pct = (seconds: number) =>
 const crossfadeKeyframes = `@keyframes card-screen-crossfade {
   0% { opacity: 0; }
   ${pct(fadeSeconds)} { opacity: 1; }
-  ${pct(screenWindowSeconds - fadeSeconds)} { opacity: 1; }
-  ${pct(screenWindowSeconds)} { opacity: 0; }
+  ${pct(screenWindowSeconds)} { opacity: 1; }
+  ${pct(screenWindowSeconds + fadeSeconds)} { opacity: 0; }
   100% { opacity: 0; }
 }`;
 ---
@@ -72,7 +78,7 @@ const crossfadeKeyframes = `@keyframes card-screen-crossfade {
         {screens.map((screen, index) => (
           <picture
             class="cycling-screen"
-            style={`animation: card-screen-crossfade ${cycleSeconds}s infinite; animation-delay: -${index * screenWindowSeconds}s;`}
+            style={`animation: card-screen-crossfade ${cycleSeconds}s linear infinite; animation-delay: -${index * screenWindowSeconds}s;`}
           >
             <source srcset={`${base}images/card-screens/${screen.stem}.webp`} type="image/webp" />
             <img

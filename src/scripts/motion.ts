@@ -135,6 +135,71 @@ function init() {
     heroIcon.addEventListener('mouseleave', () => heroIcon.classList.remove('is-fanned'));
   }
 
+  // Pointer-tracked 3D tilt + specular glare for glass-card stacks
+  // ([data-tilt]). The cursor drives two things per card:
+  //   --tilt-x/--tilt-y  3D rotation, lerped each frame for weight
+  //   --gx/--gy          glare hotspot, so the reflection tracks the eye
+  // Desktop-only: touch devices keep the is-fanned + float treatment.
+  const tiltStacks = document.querySelectorAll<HTMLElement>('[data-tilt]');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (tiltStacks.length && !reduced && finePointer) {
+    tiltStacks.forEach((stack) => {
+      const cards = Array.from(stack.querySelectorAll<HTMLElement>('.pouch-card-tilt'));
+      if (!cards.length) return;
+
+      const MAX_TILT_X = 5; // deg
+      const MAX_TILT_Y = 7; // deg
+      const LERP = 0.12;
+
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let rafId = 0;
+
+      const frame = () => {
+        currentX += (targetX - currentX) * LERP;
+        currentY += (targetY - currentY) * LERP;
+
+        cards.forEach((card) => {
+          const depth = Number(card.dataset.tiltDepth ?? '1');
+          card.style.setProperty('--tilt-x', `${(-currentY * MAX_TILT_X * depth).toFixed(3)}deg`);
+          card.style.setProperty('--tilt-y', `${(currentX * MAX_TILT_Y * depth).toFixed(3)}deg`);
+        });
+
+        const settled =
+          Math.abs(targetX - currentX) < 0.001 && Math.abs(targetY - currentY) < 0.001;
+        rafId = settled ? 0 : requestAnimationFrame(frame);
+      };
+
+      const wake = () => {
+        if (!rafId) rafId = requestAnimationFrame(frame);
+      };
+
+      stack.addEventListener('pointermove', (e) => {
+        const rect = stack.getBoundingClientRect();
+        targetX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        targetY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+
+        cards.forEach((card) => {
+          const cardRect = card.getBoundingClientRect();
+          const gx = ((e.clientX - cardRect.left) / cardRect.width) * 100;
+          const gy = ((e.clientY - cardRect.top) / cardRect.height) * 100;
+          card.style.setProperty('--gx', `${gx.toFixed(1)}%`);
+          card.style.setProperty('--gy', `${gy.toFixed(1)}%`);
+        });
+
+        wake();
+      });
+
+      stack.addEventListener('pointerleave', () => {
+        targetX = 0;
+        targetY = 0;
+        wake();
+      });
+    });
+  }
+
   const mobileCardStacks = document.querySelectorAll<HTMLElement>(
     '.pouch-cards-stack-wrapper, .collection-cards-stack-wrapper',
   );
