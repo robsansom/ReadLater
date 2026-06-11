@@ -533,11 +533,12 @@ html.boot .site-header-chrome {
   height: 160%;
   top: -30%;
   left: -30%;
-  background: radial-gradient(circle, rgba(250, 52, 84, 0.12) 0%, transparent 65%);
-  filter: blur(80px);
+  background:
+    radial-gradient(circle at 38% 30%, rgba(250, 52, 84, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 65% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+  filter: blur(60px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.85;
 }
 
 .pouch-cards-stack {
@@ -560,19 +561,26 @@ html.boot .site-header-chrome {
   transform-style: preserve-3d;
 }
 
-/* Middle layer: slow idle bob so the glass never reads as a frozen
-   screenshot. The two cards drift out of phase. */
+/* Middle layer: idle float so the cards read as alive, not frozen
+   screenshots. Travel and a whisper of rotation are deliberately
+   perceptible; the two cards drift out of phase and in opposite
+   rotational directions so the stack feels loosely suspended. */
 .pouch-card-float {
   transform-style: preserve-3d;
-  animation: pouchCardFloat 9s ease-in-out infinite;
+  animation: pouchCardFloat 7s ease-in-out infinite;
 }
 .pouch-card-float--alt {
-  animation-duration: 11s;
-  animation-delay: -4.5s;
+  animation-name: pouchCardFloatAlt;
+  animation-duration: 8.5s;
+  animation-delay: -3.5s;
 }
 @keyframes pouchCardFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(-0.7deg); }
+}
+@keyframes pouchCardFloatAlt {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(0.6deg); }
 }
 
 /* Inner layer: the visual card. Pointer tilt is driven by --tilt-x /
@@ -581,11 +589,15 @@ html.boot .site-header-chrome {
   position: relative;
   border-radius: 39px;
   overflow: hidden;
-  background: #141416;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Lifted a step above the page ink (#141416 was vanishing into the
+     near-black canvas) plus a brighter rim and deeper shadow so the
+     cards separate from the background instead of dissolving. */
+  background: #1c1c1f;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow:
-    0 20px 50px -12px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 28px 70px -14px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
   transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
   transition: box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;

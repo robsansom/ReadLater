@@ -41,9 +41,9 @@ const features: Feature[] = [
     layout: 'visual-top',
     image: {
       src: `${base}images/bento-share-sheet.png`,
-      alt: 'iOS share sheet with a saved link and the Read Later action',
-      width: 392,
-      height: 234,
+      alt: 'iOS share sheet with AirDrop contacts and the Read Later save action',
+      width: 445,
+      height: 297,
       class: 'bento-img bento-img--share',
     },
   },
@@ -80,7 +80,7 @@ const features: Feature[] = [
   {
     span: 'md:col-span-3',
     eyebrow: 'Make It Yours',
-    title: 'Make every bookmark yours',
+    title: 'Make every save yours',
     body: 'Rewrite, tag, swap images or generate a better cover.',
     layout: 'stacked',
     image: {
@@ -135,7 +135,7 @@ const features: Feature[] = [
     </p>
 
     <h2 class="mt-6 sm:mt-7 display-section text-[clamp(2.25rem,6vw,5rem)] text-balance max-w-[22ch]">
-      Lightweight,&nbsp;<span class="text-dim">on purpose.</span>
+      Simple,&nbsp;<span class="text-dim">on purpose.</span>
     </h2>
 
     <p class="reveal reveal-delay-2 mt-6 max-w-xl text-[16px] sm:text-[17px] 2xl:text-[19px] leading-[1.55] text-pouch-textSoft">
@@ -242,24 +242,17 @@ const features: Feature[] = [
     transform: translateY(-6px);
   }
 
-  /* Share extension art. The asset is cut square across its top edge
-     (the device continues out of frame), so it sits flush against the
-     tile's top edge — negative margin cancels the card padding and the
-     card's overflow-hidden crops it cleanly. Horizontally centred. */
+  /* Share extension art. Keep the cropped top flush with the tile, but
+     inset the sides slightly so the device has a little breathing room. */
   .bento-img--share {
-    /* Bleeds edge-to-edge past the card padding (negative margins
-       cancel p-6/sm:p-7) so the cropped device reads as emerging from
-       the tile's top, and the art scales with the tile instead of
-       leaving a growing void when the row stretches on wide layouts. */
-    width: calc(100% + 3rem);
+    width: 94%;
     max-width: none;
-    margin: -1.5rem -1.5rem 0;
+    margin: -1.5rem auto 0;
     filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.10));
   }
   @media (min-width: 640px) {
     .bento-img--share {
-      width: calc(100% + 3.5rem);
-      margin: -1.75rem -1.75rem 0;
+      margin-top: -1.75rem;
     }
   }
 
