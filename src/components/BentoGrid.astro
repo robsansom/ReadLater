@@ -201,7 +201,7 @@ const features: Feature[] = [
               class={[
                 'bento-visual',
                 f.layout === 'visual-top' && 'order-first flex justify-center',
-                f.layout === 'stacked' && 'mt-8 sm:mt-10 flex-1 flex items-end justify-center',
+                f.layout === 'stacked' && 'mt-6 sm:mt-7 flex-1 flex items-end justify-center',
                 f.layout === 'overlay' && 'absolute inset-0',
                 f.layout === 'bottom-flush' && 'mt-8 flex-1 flex items-end justify-center -mb-6 sm:-mb-7',
                 f.layout === 'split' && 'order-1 md:order-2 mb-8 md:mb-0 md:flex-1 md:min-w-0 md:flex md:justify-end',
@@ -257,7 +257,9 @@ const features: Feature[] = [
   }
 
   .bento-img--collections {
-    width: min(100%, 429px);
+    /* Slightly tighter cap keeps the first bento row shorter, which in
+       turn trims the empty band under the share-sheet device next door. */
+    width: min(100%, 396px);
   }
   /* The export carries generous transparent shadow padding; on narrow
      tiles let it bleed slightly so the cards themselves read larger. */

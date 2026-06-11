@@ -529,13 +529,16 @@ html.boot .site-header-chrome {
 
 .pouch-ambient-glow {
   position: absolute;
-  width: 160%;
-  height: 160%;
-  top: -30%;
-  left: -30%;
+  /* Kept inside the section's vertical bounds: the previous -30% top
+     offset pushed the blur past the section edge, where overflow-hidden
+     sliced it into a visible hard line. */
+  width: 150%;
+  height: 140%;
+  top: -8%;
+  left: -25%;
   background:
-    radial-gradient(circle at 38% 30%, rgba(250, 52, 84, 0.22) 0%, transparent 55%),
-    radial-gradient(circle at 65% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+    radial-gradient(circle at 40% 42%, rgba(250, 52, 84, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 64% 72%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
@@ -607,6 +610,9 @@ html.boot .site-header-chrome {
   width: 100%;
   height: auto;
   display: block;
+  /* The app renders these cards in Liquid Glass, which picks up ambient
+     light the flat export can't. A gentle lift stands in for that. */
+  filter: brightness(1.08) saturate(1.04);
 }
 
 /* Cursor-tracked specular highlight. Position (--gx/--gy) follows the
@@ -615,7 +621,9 @@ html.boot .site-header-chrome {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0;
+  /* Resting sheen sells the glass even before the pointer arrives; the
+     default --gx/--gy put the highlight at the card's upper area. */
+  opacity: 0.45;
   transition: opacity 450ms ease-out;
   background: radial-gradient(
     130% 90% at var(--gx, 50%) var(--gy, 35%),
