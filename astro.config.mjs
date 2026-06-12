@@ -7,5 +7,9 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://getreadlater.com',
   trailingSlash: 'ignore',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr', 'es', 'de', 'ja'],
+  },
   integrations: [tailwind({ applyBaseStyles: false })],
 });

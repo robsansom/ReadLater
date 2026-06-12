@@ -1,5 +1,8 @@
 ---
 import AppStoreBadge from './AppStoreBadge.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <section class="relative isolate overflow-hidden bg-pouch-ink text-pouch-text">
@@ -8,7 +11,7 @@ import AppStoreBadge from './AppStoreBadge.astro';
   <div class="hero-inner relative mx-auto max-w-8xl px-6 sm:px-8 lg:px-10 pt-16 sm:pt-24 lg:pt-28 pb-12 sm:pb-32">
 
     <p class="text-[12px] uppercase tracking-[0.24em] text-pouch-textMuted">
-      Read Later
+      {t.hero.eyebrow}
     </p>
 
     {/* Brand line. Largest type on the site — every other section
@@ -16,18 +19,18 @@ import AppStoreBadge from './AppStoreBadge.astro';
         same red used elsewhere. Intentionally static (no entrance
         animation) so the brand line lands instantly on first paint. */}
     <h1 class="hero-headline mt-7 sm:mt-9 display text-[clamp(2.75rem,9vw,7rem)]">
-      <span class="block">Save anything.</span>
-      <span class="block text-dim">Find everything.</span>
+      <span class="block">{t.hero.title}</span>
+      <span class="block text-dim">{t.hero.titleAccent}</span>
     </h1>
 
     <p class="mt-8 max-w-xl text-[18px] sm:text-[20px] leading-[1.4] text-pouch-textSoft">
-      A beautifully simple place for the articles, videos, recipes and ideas you want to find again.
+      {t.hero.body}
     </p>
 
     <div class="hero-actions mt-10 sm:mt-12 flex flex-wrap items-center gap-5">
       <AppStoreBadge height={56} />
       <span class="text-[13.5px] text-pouch-textMuted">
-        For iPhone &amp; iPad
+        {t.hero.badgeLabel}
       </span>
     </div>
   </div>

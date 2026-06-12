@@ -1,0 +1,130 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../Hero.astro';
+import Showcase from '../Showcase.astro';
+import TabletShowcase from '../TabletShowcase.astro';
+import SplitHeadline from '../SplitHeadline.astro';
+import BentoGrid from '../BentoGrid.astro';
+import PartOfIphone from '../PartOfIphone.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<Base
+  title={t.meta.title}
+  description={t.meta.description}
+>
+  <Hero />
+
+  <Showcase
+    eyebrow={t.showcaseQuickSave.eyebrow}
+    headline={t.showcaseQuickSave.headline}
+    headlineAccent={t.showcaseQuickSave.headlineAccent}
+    image="bookmark-cards"
+    alt={t.showcaseQuickSave.imageAlt}
+    body={t.showcaseQuickSave.body}
+    device="right"
+    themeImageMode="dark"
+  />
+
+  {/* New "Cards" showcase. Sits inside the dark stretch (before the
+      theme sentinel flips the page to light) so it keeps the same dark
+      tone as Bookmarks above it, with the device on the opposite side
+      to create visual rhythm. */}
+  <Showcase
+    eyebrow={t.showcaseLibrary.eyebrow}
+    headline={t.showcaseLibrary.headline}
+    headlineAccent={t.showcaseLibrary.headlineAccent}
+    image="card-screens"
+    alt={t.showcaseLibrary.imageAlt}
+    body={t.showcaseLibrary.body}
+    device="left"
+    themeImageMode="dark"
+  />
+
+  {/* Tablet moment. The `#theme-sentinel` sits at the vertical midpoint
+      of the iPad image so the page-wide theme flip and the iPad screen
+      cross-fade land in the same beat. */}
+  <TabletShowcase
+    eyebrow={t.showcaseIpad.eyebrow}
+    headline={t.showcaseIpad.headline}
+    headlineAccent={t.showcaseIpad.headlineAccent}
+    body={t.showcaseIpad.body}
+    imageDark="ipad-dark"
+    imageLight="ipad-light"
+    altDark={t.showcaseIpad.imageAltDark}
+    altLight={t.showcaseIpad.imageAltLight}
+  />
+
+  <Showcase
+    eyebrow={t.showcaseCollections.eyebrow}
+    headline={t.showcaseCollections.headline}
+    headlineAccent={t.showcaseCollections.headlineAccent}
+    image="collection-cards"
+    alt={t.showcaseCollections.imageAlt}
+    body={t.showcaseCollections.body}
+    device="right"
+    themeImageMode="light"
+  />
+
+  <SplitHeadline
+    eyebrow={t.splitHeadlinePrivacy.eyebrow}
+    first={t.splitHeadlinePrivacy.first}
+    second={t.splitHeadlinePrivacy.second}
+    body={t.splitHeadlinePrivacy.body}
+  />
+
+  <BentoGrid />
+
+  <PartOfIphone />
+
+  {/* Scroll-triggered global theme inversion. Toggles `is-light` on
+      <html> when #theme-sentinel above crosses the viewport midline.
+      Lives inside <Base> so the script is rendered inside <body>. */}
+  <script is:inline>
+    (() => {
+      const root = document.documentElement;
+      root.classList.add('boot');
+
+      const init = () => {
+        const sentinel = document.getElementById('theme-sentinel');
+        if (!sentinel) {
+          root.classList.remove('boot');
+          return;
+        }
+
+        const update = () => {
+          const trigger = window.innerHeight * 0.5;
+          const y = sentinel.getBoundingClientRect().top;
+          root.classList.toggle('is-light', y < trigger);
+
+          const header = document.getElementById('site-header');
+          if (header) {
+            const sampleY = Math.min(header.getBoundingClientRect().bottom + 2, window.innerHeight - 1);
+            const surface = document.elementFromPoint(window.innerWidth / 2, sampleY)?.closest('section, footer');
+            const surfaceIsLight = root.classList.contains('is-light')
+              && surface?.classList.contains('bg-pouch-ink');
+            root.classList.toggle('header-on-light', Boolean(surfaceIsLight));
+            root.classList.toggle('header-on-dark', !surfaceIsLight);
+          }
+        };
+
+        update();
+        // Clear the boot guard on the next frame so subsequent flips animate.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => root.classList.remove('boot'));
+        });
+
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</Base>

@@ -6,42 +6,21 @@
  * Each tile pairs short copy with an image exported straight from the
  * design file, so the visuals are the real app moments.
  */
+import { useTranslations } from '../i18n/utils';
 
-type Layout = 'visual-top' | 'stacked' | 'overlay' | 'bottom-flush' | 'split';
-
-interface Feature {
-  mobileOrder?: string;
-  span: string;
-  eyebrow: string;
-  title: string;
-  body: string;
-  accent?: boolean;
-  /** Use the larger display-style heading (matches the wide Export tile). */
-  largeTitle?: boolean;
-  layout: Layout;
-  image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    class: string;
-  };
-}
+const t = useTranslations(Astro.currentLocale);
 
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
-const features: Feature[] = [
+const bentoLayouts = [
   {
     span: 'md:col-span-3',
-    eyebrow: 'Share Extension',
-    title: 'Save from anywhere',
-    body: 'Save articles, videos, posts, PDFs and useful attachments from the apps you already use. One tap, straight to your library.',
-    layout: 'visual-top',
+    key: 'shareExtension' as const,
+    layout: 'visual-top' as const,
     image: {
       src: `${base}images/bento-share-sheet.png`,
-      alt: 'iOS share sheet with AirDrop contacts and the Read Later save action',
       width: 445,
       height: 297,
       class: 'bento-img bento-img--share',
@@ -49,13 +28,10 @@ const features: Feature[] = [
   },
   {
     span: 'md:col-span-3',
-    eyebrow: 'Collections',
-    title: 'Collect & share what matters',
-    body: 'Create collections for trips, projects, wishlists and ideas. Share a snapshot that someone else can add to their own library.',
-    layout: 'stacked',
+    key: 'collections' as const,
+    layout: 'stacked' as const,
     image: {
       src: `${base}images/bento-collections.png`,
-      alt: 'Two collection cards: Living Room Inspiration and Favourite Restaurants',
       width: 429,
       height: 295,
       class: 'bento-img bento-img--collections',
@@ -63,15 +39,12 @@ const features: Feature[] = [
   },
   {
     span: 'md:col-span-3',
-    eyebrow: 'Find',
-    title: 'Find the thing fast',
-    body: 'Search titles, notes, tags and sources without digging. Find it even when you can\u2019t remember what it was called.',
+    key: 'find' as const,
     accent: true,
     largeTitle: true,
-    layout: 'overlay',
+    layout: 'overlay' as const,
     image: {
       src: `${base}images/bento-search-glass.png`,
-      alt: '',
       width: 460,
       height: 392,
       class: 'bento-img bento-img--search',
@@ -79,13 +52,10 @@ const features: Feature[] = [
   },
   {
     span: 'md:col-span-3',
-    eyebrow: 'Make It Yours',
-    title: 'Make every save yours',
-    body: 'Rewrite, tag, swap the cover or regenerate it with Apple Intelligence.',
-    layout: 'stacked',
+    key: 'makeItYours' as const,
+    layout: 'stacked' as const,
     image: {
       src: `${base}images/bento-edit-menu.png`,
-      alt: 'Edit menu with Edit Cover, Edit Tags, Edit Title and Edit Description actions',
       width: 318,
       height: 222,
       class: 'bento-img bento-img--edit',
@@ -94,13 +64,10 @@ const features: Feature[] = [
   {
     mobileOrder: 'order-6 md:order-none',
     span: 'md:col-span-2',
-    eyebrow: 'Privacy',
-    title: 'Private by default',
-    body: 'No account. No tracking. Your iCloud, your library.',
-    layout: 'bottom-flush',
+    key: 'privacy' as const,
+    layout: 'bottom-flush' as const,
     image: {
       src: `${base}images/bento-privacy-lock.png`,
-      alt: 'Red padlock',
       width: 346,
       height: 224,
       class: 'bento-img bento-img--lock',
@@ -109,13 +76,10 @@ const features: Feature[] = [
   {
     mobileOrder: 'order-5 md:order-none',
     span: 'md:col-span-4',
-    eyebrow: 'Export',
-    title: 'Export anytime. Portable, flexible and yours.',
-    body: 'Export your full library - saves, notes and collections - as Markdown (Obsidian, LLM), CSV (Excel) or JSON.',
-    layout: 'split',
+    key: 'export' as const,
+    layout: 'split' as const,
     image: {
       src: `${base}images/bento-export-card.png`,
-      alt: 'Import and Export settings card with Import bookmarks and Export library options',
       width: 372,
       height: 225,
       class: 'bento-img bento-img--export',
@@ -131,20 +95,21 @@ const features: Feature[] = [
       than sprawling edge-to-edge. */}
   <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10 pt-24 sm:pt-32 pb-24 sm:pb-32">
     <p class="reveal-eyebrow text-[12px] uppercase tracking-[0.24em] text-pouch-textMuted">
-      Features
+      {t.bento.eyebrow}
     </p>
 
     <h2 class="mt-6 sm:mt-7 display-section text-[clamp(2.25rem,6vw,5rem)] text-balance max-w-[22ch]">
-      Simple,&nbsp;<span class="text-dim">on purpose.</span>
+      {t.bento.headline}&nbsp;<span class="text-dim">{t.bento.headlineAccent}</span>
     </h2>
 
     <p class="reveal reveal-delay-2 mt-6 max-w-xl text-[16px] sm:text-[17px] 2xl:text-[19px] leading-[1.55] text-pouch-textSoft">
-      Quiet on the outside, deeply capable underneath. The essentials are designed to feel obvious, fast and out of your way.
+      {t.bento.body}
     </p>
 
     <div class="mt-12 sm:mt-14 grid grid-cols-1 md:grid-cols-6 gap-3.5 sm:gap-4">
-      {features.map((f, i) => {
-        const isSplit = f.layout === 'split';
+      {bentoLayouts.map((item, i) => {
+        const translation = t.bento[item.key];
+        const isSplit = item.layout === 'split';
         return (
           <article
             class={[
@@ -154,69 +119,69 @@ const features: Feature[] = [
               isSplit
                 ? 'flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10'
                 : 'flex flex-col',
-              f.accent ? 'bg-pouch-red text-white' : 'bento-tile',
-              f.mobileOrder ?? '',
-              f.span,
+              item.accent ? 'bg-pouch-red text-white' : 'bento-tile',
+              item.mobileOrder ?? '',
+              item.span,
             ].join(' ')}
           >
             <div
               class={[
                 isSplit ? 'order-2 md:order-1 md:flex-1 md:min-w-0' : '',
-                f.layout === 'visual-top' ? 'mt-auto pt-8' : '',
-                f.layout === 'overlay' ? 'relative z-10 max-w-[38ch]' : '',
+                item.layout === 'visual-top' ? 'mt-auto pt-8' : '',
+                item.layout === 'overlay' ? 'relative z-10 max-w-[38ch]' : '',
               ].join(' ')}
             >
               <p
                 class={[
                   'text-[12px] uppercase tracking-[0.18em]',
-                  f.accent ? 'text-white/75' : 'text-pouch-textMuted',
+                  item.accent ? 'text-white/75' : 'text-pouch-textMuted',
                 ].join(' ')}
               >
-                {f.eyebrow}
+                {translation.eyebrow}
               </p>
               <h3
                 class={[
                   'mt-4 font-semibold tracking-tight leading-[1.18]',
-                  isSplit || f.largeTitle
+                  isSplit || ('largeTitle' in item && item.largeTitle)
                     ? 'text-[clamp(1.65rem,3.2vw,2.4rem)] max-w-[18ch]'
                     : 'text-[clamp(1.25rem,2.2vw,1.55rem)]',
-                  f.accent ? 'text-white' : 'text-pouch-text',
+                  item.accent ? 'text-white' : 'text-pouch-text',
                 ].join(' ')}
               >
-                {f.title}
+                {translation.title}
               </h3>
               <p
                 class={[
                   'mt-3 leading-[1.55]',
                   isSplit ? 'text-[15.5px] sm:text-[16px] max-w-[40ch]' : 'text-[14.5px] max-w-[40ch]',
-                  f.layout === 'visual-top' ? 'text-[15px] max-w-[52ch] text-pretty' : '',
-                  f.accent ? 'text-white/85' : 'text-pouch-textSoft',
+                  item.layout === 'visual-top' ? 'text-[15px] max-w-[52ch] text-pretty' : '',
+                  item.accent ? 'text-white/85' : 'text-pouch-textSoft',
                 ].join(' ')}
               >
-                {f.body}
+                {translation.body}
               </p>
             </div>
 
             <div
               class={[
                 'bento-visual',
-                f.layout === 'visual-top' && 'order-first flex justify-center',
-                f.layout === 'stacked' && 'mt-6 sm:mt-7 flex-1 flex items-end justify-center',
-                f.layout === 'overlay' && 'absolute inset-0',
-                f.layout === 'bottom-flush' && 'mt-8 flex-1 flex items-end justify-center -mb-6 sm:-mb-7',
-                f.layout === 'split' && 'order-1 md:order-2 mb-8 md:mb-0 md:flex-1 md:min-w-0 md:flex md:justify-end',
+                item.layout === 'visual-top' && 'order-first flex justify-center',
+                item.layout === 'stacked' && 'mt-6 sm:mt-7 flex-1 flex items-end justify-center',
+                item.layout === 'overlay' && 'absolute inset-0',
+                item.layout === 'bottom-flush' && 'mt-8 flex-1 flex items-end justify-center -mb-6 sm:-mb-7',
+                item.layout === 'split' && 'order-1 md:order-2 mb-8 md:mb-0 md:flex-1 md:min-w-0 md:flex md:justify-end',
               ]
                 .filter(Boolean)
                 .join(' ')}
             >
               <picture class="contents">
-                <source srcset={f.image.src.replace(/\.png$/, '.webp')} type="image/webp" />
+                <source srcset={item.image.src.replace(/\.png$/, '.webp')} type="image/webp" />
                 <img
-                  src={f.image.src}
-                  alt={f.image.alt}
-                  class={f.image.class}
-                  width={f.image.width}
-                  height={f.image.height}
+                  src={item.image.src}
+                  alt={translation.alt}
+                  class={item.image.class}
+                  width={item.image.width}
+                  height={item.image.height}
                   loading="lazy"
                   decoding="async"
                 />
