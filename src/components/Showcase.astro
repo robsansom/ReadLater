@@ -83,18 +83,33 @@ const bodyAlignClass = device === 'right' ? 'md:ml-auto' : '';
             {/* data-tilt: pointer-tracked 3D tilt + glass glare (motion.ts).
                 Layer order per card: item (stack position + hover fan) >
                 float (idle bob) > tilt (3D rotation + card chrome + glare). */}
+            {/* Cards are built in HTML/CSS (mirroring the app's CardLarge
+                liquid-glass spec) so type and pills stay crisp at every
+                size — only the cover photos are images. */}
             <div class="pouch-cards-stack" data-tilt>
               <div class="pouch-card-item pouch-card-item--1 reveal-image">
                 <div class="pouch-card-float">
                   <div class="pouch-card-tilt" data-tilt-depth="0.55">
-                    <picture class="block">
-                      <img
-                        src={`${base}images/bookmark-card-1.png`}
-                        alt="A saved restaurant card in the Read Later library"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </picture>
+                    <article class="save-card" aria-label="A saved restaurant card in the Read Later library">
+                      <picture class="save-card__cover">
+                        <source srcset={`${base}images/save-cover-restaurant.webp`} type="image/webp" />
+                        <img
+                          src={`${base}images/save-cover-restaurant.jpg`}
+                          alt="Sunset over a lakeside restaurant terrace, the cover of a saved restaurant card"
+                          loading="lazy"
+                          decoding="async"
+                          width="936"
+                          height="512"
+                        />
+                      </picture>
+                      <p class="save-card__title">Luca: Clerkenwell Pasta for Friday Night</p>
+                      <div class="save-card__meta">
+                        <span class="save-card__tag">Restaurants</span>
+                        <span class="save-card__tag">London</span>
+                        <span class="save-card__more">+1</span>
+                        <span class="save-card__ellipsis" aria-hidden="true"><i></i><i></i><i></i></span>
+                      </div>
+                    </article>
                     <div class="pouch-card-glare" aria-hidden="true"></div>
                   </div>
                 </div>
@@ -102,14 +117,26 @@ const bodyAlignClass = device === 'right' ? 'md:ml-auto' : '';
               <div class="pouch-card-item pouch-card-item--2 reveal-image">
                 <div class="pouch-card-float pouch-card-float--alt">
                   <div class="pouch-card-tilt" data-tilt-depth="1">
-                    <picture class="block">
-                      <img
-                        src={`${base}images/bookmark-card-2.png`}
-                        alt="A saved interior-design card in the Read Later library"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </picture>
+                    <article class="save-card" aria-label="A saved interior-design card in the Read Later library">
+                      <picture class="save-card__cover">
+                        <source srcset={`${base}images/save-cover-living-room.webp`} type="image/webp" />
+                        <img
+                          src={`${base}images/save-cover-living-room.jpg`}
+                          alt="A bright living room with armchairs and an arched floor lamp, the cover of a saved interior-design card"
+                          loading="lazy"
+                          decoding="async"
+                          width="936"
+                          height="512"
+                        />
+                      </picture>
+                      <p class="save-card__title">Living Room Lighting Ideas That Feel Warm</p>
+                      <div class="save-card__meta">
+                        <span class="save-card__tag">Home</span>
+                        <span class="save-card__tag">Decor</span>
+                        <span class="save-card__more">+1</span>
+                        <span class="save-card__ellipsis" aria-hidden="true"><i></i><i></i><i></i></span>
+                      </div>
+                    </article>
                     <div class="pouch-card-glare" aria-hidden="true"></div>
                   </div>
                 </div>
