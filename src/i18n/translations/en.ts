@@ -5,6 +5,34 @@ export const en: TranslationSchema = {
     title: 'Read Later - Save anything. Find everything.',
     description: 'A beautifully simple place for the articles, videos, recipes and ideas you want to find again. For iPhone and iPad.'
   },
+  a11y: {
+    selectLanguage: 'Select language',
+    homeLink: 'Read Later home',
+    appStoreLinkLabel: 'Download Read Later on the App Store',
+    appStoreBadgeAlt: 'Download on the App Store',
+    cardScreenAlt: 'A saved card in Read Later'
+  },
+  mockSaveCards: {
+    restaurant: {
+      title: 'Luca: Clerkenwell Pasta for Friday Night',
+      tag1: 'Restaurants',
+      tag2: 'London',
+      aria: 'A saved restaurant card in the Read Later library',
+      coverAlt: 'Sunset over a lakeside restaurant terrace, the cover of a saved restaurant card'
+    },
+    livingRoom: {
+      title: 'Living Room Lighting Ideas That Feel Warm',
+      tag1: 'Home',
+      tag2: 'Decor',
+      aria: 'A saved interior-design card in the Read Later library',
+      coverAlt: 'A bright living room with armchairs and an arched floor lamp, the cover of a saved interior-design card'
+    }
+  },
+  mockCollectionCards: {
+    travel: { title: 'Places to Visit in Italy', meta: '14 saves • Read Later' },
+    home: { title: 'Living Room Inspiration', meta: '9 saves • Read Later' },
+    recipes: { title: 'Favourite Restaurants', meta: '23 saves • Read Later' }
+  },
   header: {
     features: 'Features',
     support: 'Support',

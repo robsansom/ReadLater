@@ -13,6 +13,9 @@
  * @see https://developer.apple.com/app-store/marketing/guidelines/
  */
 import { site } from '../config/site';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
 
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
@@ -38,13 +41,13 @@ const isExternal = href.startsWith('http');
 <a
   href={href}
   class={`app-store-badge inline-flex shrink-0 ${className}`}
-  aria-label="Download Read Later on the App Store"
+  aria-label={t.a11y.appStoreLinkLabel}
   target={isExternal ? '_blank' : undefined}
   rel={isExternal ? 'noopener' : undefined}
 >
   <img
     src={`${base}images/download-on-the-app-store.svg`}
-    alt="Download on the App Store"
+    alt={t.a11y.appStoreBadgeAlt}
     width={width}
     height={height}
     style={`height:${height}px;width:auto;`}

@@ -5,6 +5,34 @@ export const es: TranslationSchema = {
     title: 'Read Later - Guarda lo que quieras. Encuéntralo todo.',
     description: 'Un espacio simple y elegante para guardar los artículos, vídeos, recetas e ideas que quieres volver a ver. Para iPhone y iPad.'
   },
+  a11y: {
+    selectLanguage: 'Seleccionar idioma',
+    homeLink: 'Inicio de Read Later',
+    appStoreLinkLabel: 'Descargar Read Later en el App Store',
+    appStoreBadgeAlt: 'Descargar en el App Store',
+    cardScreenAlt: 'Una tarjeta guardada en Read Later'
+  },
+  mockSaveCards: {
+    restaurant: {
+      title: 'Luca: pasta en Clerkenwell para el viernes',
+      tag1: 'Restaurantes',
+      tag2: 'Londres',
+      aria: 'Una tarjeta de restaurante guardada en la biblioteca de Read Later',
+      coverAlt: 'Atardecer sobre la terraza de un restaurante junto al lago, portada de una tarjeta de restaurante guardada'
+    },
+    livingRoom: {
+      title: 'Ideas de iluminación cálida para el salón',
+      tag1: 'Hogar',
+      tag2: 'Deco',
+      aria: 'Una tarjeta de interiorismo guardada en la biblioteca de Read Later',
+      coverAlt: 'Un salón luminoso con butacas y una lámpara de pie arqueada, portada de una tarjeta de interiorismo guardada'
+    }
+  },
+  mockCollectionCards: {
+    travel: { title: 'Lugares que ver en Italia', meta: '14 elementos • Read Later' },
+    home: { title: 'Inspiración para el salón', meta: '9 elementos • Read Later' },
+    recipes: { title: 'Restaurantes favoritos', meta: '23 elementos • Read Later' }
+  },
   header: {
     features: 'Funciones',
     support: 'Soporte',
@@ -208,7 +236,7 @@ export const es: TranslationSchema = {
       },
       {
         title: 'Tus derechos',
-        body: 'Dependiendo de dónde residas, puedes tener derechos sobre tus datos personales (aceso, rectificación, supresión, limitación, oposición o reclamación ante un regulador). Escribe a support@getreadlater.com para realizar una solicitud. Los residentes en el Reino Unido pueden reclamar ante la ICO (ico.org.uk). Las copias locales en tu dispositivo o iCloud deben gestionarse desde la App o por tu parte, ya que no tenemos acceso.'
+        body: 'Dependiendo de dónde residas, puedes tener derechos sobre tus datos personales (acceso, rectificación, supresión, limitación, oposición o reclamación ante un regulador). Escribe a support@getreadlater.com para realizar una solicitud. Los residentes en el Reino Unido pueden reclamar ante la ICO (ico.org.uk). Las copias locales en tu dispositivo o iCloud deben gestionarse desde la App o por tu parte, ya que no tenemos acceso.'
       },
       {
         title: 'Cambios en esta política',
@@ -288,7 +316,7 @@ export const es: TranslationSchema = {
       },
       {
         title: '2. La licencia',
-        body: 'Read Later se te concede bajo licencia (no se vende) para uso personal y no comercial en cualquier dispositivo Apple de tu propiedad o bajo tu control, según las condiciones del EULA de Apple. En caso de que estas condiciones amplíen dicho EULA (como en propiedad intelectual o resolución de disputas), estas condiciones prevalecerán.',
+        body: 'Read Later se te concede bajo licencia (no se vende) para uso personal y no comercial en cualquier dispositivo Apple de tu propiedad o bajo tu control, según las condiciones del EULA de Apple. Cuando estas condiciones amplíen dicho EULA (como en propiedad intelectual, reembolsos o resolución de disputas), estas condiciones se aplicarán junto con él.',
         link: {
           label: 'Leer el EULA estándar de Apple',
           href: 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/'
@@ -296,7 +324,7 @@ export const es: TranslationSchema = {
       },
       {
         title: '3. Gratis y Plus',
-        body: 'Read Later puede ofrecer funciones gratuitas y de pago. Los límites y precios actuales se detallan en la App y en la ficha de la App Store. Las funciones Plus pueden incluir límites ilimitados y la posibilidad de compartir colecciones. Las funciones pueden variar según el dispositivo, la versión del sistema operativo y la región.'
+        body: 'Read Later puede ofrecer funciones gratuitas y de pago. Los límites y precios actuales se detallan en la App y en la ficha de la App Store. Las funciones Plus pueden incluir límites más altos o ilimitados y la posibilidad de compartir colecciones. Las funciones pueden variar según el dispositivo, la versión del sistema operativo y la región.'
       },
       {
         title: '4. Suscripciones y pago único',

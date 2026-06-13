@@ -5,6 +5,34 @@ export const ja: TranslationSchema = {
     title: 'Read Later - 何でも保存。すぐに見つける。',
     description: '保存した記事、動画、レシピ、アイデアをいつでも簡単に見つけられる、美しくシンプルな場所。iPhoneとiPadに対応。'
   },
+  a11y: {
+    selectLanguage: '言語を選択',
+    homeLink: 'Read Laterホーム',
+    appStoreLinkLabel: 'App StoreでRead Laterをダウンロード',
+    appStoreBadgeAlt: 'App Storeでダウンロード',
+    cardScreenAlt: 'Read Laterに保存されたカード'
+  },
+  mockSaveCards: {
+    restaurant: {
+      title: 'Luca：金曜の夜に行きたいクラーケンウェルのパスタ',
+      tag1: 'レストラン',
+      tag2: 'ロンドン',
+      aria: 'Read Laterのライブラリに保存されたレストランのカード',
+      coverAlt: '湖畔のレストランテラスに沈む夕日。保存されたレストランカードのカバー画像'
+    },
+    livingRoom: {
+      title: '温かみのあるリビング照明のアイデア',
+      tag1: '住まい',
+      tag2: 'インテリア',
+      aria: 'Read Laterのライブラリに保存されたインテリアのカード',
+      coverAlt: 'アームチェアとアーチ型フロアランプのある明るいリビング。保存されたインテリアカードのカバー画像'
+    }
+  },
+  mockCollectionCards: {
+    travel: { title: 'イタリアで行きたい場所', meta: '14件の保存 • Read Later' },
+    home: { title: 'リビングのインスピレーション', meta: '9件の保存 • Read Later' },
+    recipes: { title: 'お気に入りのレストラン', meta: '23件の保存 • Read Later' }
+  },
   header: {
     features: '機能',
     support: 'サポート',
@@ -160,7 +188,7 @@ export const ja: TranslationSchema = {
     sections: [
       {
         title: '運営者について',
-        body: 'Read Later（以下「本アプリ」）は、英国に拠点を置く個人開発者（以下「私た​​ち」）によって配信されています。私たちは、サポートメールなど、お客様が送信を選択された個人情報の管理者となります。プライバシーに関するお問い合わせは、support@getreadlater.com までご連絡ください。'
+        body: 'Read Later（以下「本アプリ」）は、英国に拠点を置く個人開発者（以下「私たち」）によって配信されています。私たちは、サポートメールなど、お客様が送信を選択された個人情報の管理者となります。プライバシーに関するお問い合わせは、support@getreadlater.com までご連絡ください。'
       },
       {
         title: '簡略版',
@@ -180,7 +208,7 @@ export const ja: TranslationSchema = {
       },
       {
         title: '保存されたページの取得',
-        body: '本アプリがリンクに関する情報を取得する際、お客様のデバイスはそのウェブサイトまたはアプリ内に表示される別のサービスに通信する場合があります。通信先は、独自のプライバシーポリシーに従って、お客様のIPアドレスやリクエスト詳細などの一般的なネットワーク情報を受信する可能性があります。リンクを開く際、Appleのインappブラウザ技術を使用することがあります。Read Laterは、これらのリクエストを使用してシステム上に閲覧履歴を作成することはありません。'
+        body: '本アプリがリンクに関する情報を取得する際、お客様のデバイスはそのウェブサイトまたはアプリ内に表示される別のサービスに通信する場合があります。通信先は、独自のプライバシーポリシーに従って、お客様のIPアドレスやリクエスト詳細などの一般的なネットワーク情報を受信する可能性があります。リンクを開く際、Appleのアプリ内ブラウザ技術を使用することがあります。Read Laterは、これらのリクエストを使用してシステム上に閲覧履歴を作成することはありません。'
       },
       {
         title: '購入とサブスクリプション',

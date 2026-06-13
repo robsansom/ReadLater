@@ -3,6 +3,34 @@ export interface TranslationSchema {
     title: string;
     description: string;
   };
+  a11y: {
+    selectLanguage: string;
+    homeLink: string;
+    appStoreLinkLabel: string;
+    appStoreBadgeAlt: string;
+    cardScreenAlt: string;
+  };
+  mockSaveCards: {
+    restaurant: {
+      title: string;
+      tag1: string;
+      tag2: string;
+      aria: string;
+      coverAlt: string;
+    };
+    livingRoom: {
+      title: string;
+      tag1: string;
+      tag2: string;
+      aria: string;
+      coverAlt: string;
+    };
+  };
+  mockCollectionCards: {
+    travel: { title: string; meta: string };
+    home: { title: string; meta: string };
+    recipes: { title: string; meta: string };
+  };
   header: {
     features: string;
     support: string;

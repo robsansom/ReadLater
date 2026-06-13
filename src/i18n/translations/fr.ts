@@ -5,6 +5,34 @@ export const fr: TranslationSchema = {
     title: 'Read Later - Enregistrez tout. Retrouvez tout.',
     description: 'Un espace simple et élégant pour vos articles, vidéos, recettes et idées à retrouver. Pour iPhone et iPad.'
   },
+  a11y: {
+    selectLanguage: 'Choisir la langue',
+    homeLink: 'Accueil Read Later',
+    appStoreLinkLabel: 'Télécharger Read Later dans l’App Store',
+    appStoreBadgeAlt: 'Télécharger dans l’App Store',
+    cardScreenAlt: 'Une carte enregistrée dans Read Later'
+  },
+  mockSaveCards: {
+    restaurant: {
+      title: 'Luca : pâtes à Clerkenwell pour vendredi soir',
+      tag1: 'Restaurants',
+      tag2: 'Londres',
+      aria: 'Une carte de restaurant enregistrée dans la bibliothèque Read Later',
+      coverAlt: 'Coucher de soleil sur la terrasse d’un restaurant au bord d’un lac, couverture d’une carte de restaurant enregistrée'
+    },
+    livingRoom: {
+      title: 'Idées d’éclairage chaleureux pour le salon',
+      tag1: 'Maison',
+      tag2: 'Déco',
+      aria: 'Une carte de décoration intérieure enregistrée dans la bibliothèque Read Later',
+      coverAlt: 'Un salon lumineux avec des fauteuils et un lampadaire arqué, couverture d’une carte de décoration enregistrée'
+    }
+  },
+  mockCollectionCards: {
+    travel: { title: 'Lieux à voir en Italie', meta: '14 éléments • Read Later' },
+    home: { title: 'Inspiration salon', meta: '9 éléments • Read Later' },
+    recipes: { title: 'Restaurants favoris', meta: '23 éléments • Read Later' }
+  },
   header: {
     features: 'Fonctionnalités',
     support: 'Support',
@@ -237,7 +265,7 @@ export const fr: TranslationSchema = {
       },
       {
         q: 'Comment créer une collection ?',
-        a: 'Dans l’onglet Collections, touchez l’icône de crayon en haut à droite. Donnez un nom à la collection, choisissez un icône et une couleur, puis ajoutez-y des éléments depuis n’importe quel écran de l’application.'
+        a: 'Dans l’onglet Collections, touchez l’icône de crayon en haut à droite. Donnez un nom à la collection, choisissez une icône et une couleur, puis ajoutez-y des éléments depuis n’importe quel écran de l’application.'
       },
       {
         q: 'Comment fonctionne le partage de collection ?',

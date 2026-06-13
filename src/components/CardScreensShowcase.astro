@@ -3,6 +3,9 @@
  * CardScreensShowcase — Timed CSS-only crossfading screenshots centered on a black background.
  * No phone bezel mockup, no dot grid. Just clean, raw product screens.
  */
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
 
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
@@ -12,34 +15,44 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 // interleaved through the raw captures so recognisable cards are
 // spread across the loop rather than clustered. The Hampstead Heath
 // shot is intentionally excluded.
+//
+// `title` is the on-screen English card title baked into the screenshot;
+// it is appended to the localized alt text so screen readers still get
+// the specific card name. When localized screenshots are captured,
+// per-locale stems/titles can replace these.
 const screens = [
-  { stem: 'card-detail-living-room', alt: 'A card saved in Read Later: Living Room Inspiration' },
-  { stem: 'card-detail-13-32-02', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-eames-archive', alt: 'A card saved in Read Later: Eames Archive: Furniture Notes' },
-  { stem: 'card-detail-13-32-10', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-lisbon-travel', alt: 'A card saved in Read Later: Lisbon Long Weekend: Alfama, Tiles, and Sea Air' },
-  { stem: 'card-detail-13-32-18', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-sourdough-recipe', alt: 'A card saved in Read Later: A Slow Sunday Sourdough Recipe' },
-  { stem: 'card-detail-13-32-26', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-athens-tavernas', alt: 'A card saved in Read Later: Athens Tavernas for the First Night' },
-  { stem: 'card-detail-13-32-47', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-bao-london', alt: 'A card saved in Read Later: BAO: Quick Soho Dinner Before a Film' },
-  { stem: 'card-detail-13-32-55', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-manteca-pasta', alt: 'A card saved in Read Later: Manteca: Handmade Pasta in Shoreditch' },
-  { stem: 'card-detail-13-33-07', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-paris-hotels', alt: 'A card saved in Read Later: Paris Hotel Shortlist Near the Left Bank' },
-  { stem: 'card-detail-13-33-13', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-tate-modern', alt: 'A card saved in Read Later: Tate Modern and a South Bank Walk' },
-  { stem: 'card-detail-13-33-23', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-v-and-a-exhibition', alt: 'A card saved in Read Later: a V&A museum exhibition' },
-  { stem: 'card-detail-13-33-40', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-13-33-45', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-13-34-19', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-13-34-29', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-13-34-43', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-13-35-06', alt: 'A saved card in Read Later' },
-  { stem: 'card-detail-13-35-11', alt: 'A saved card in Read Later' },
-];
+  { stem: 'card-detail-living-room', title: 'Living Room Inspiration' },
+  { stem: 'card-detail-13-32-02' },
+  { stem: 'card-detail-eames-archive', title: 'Eames Archive: Furniture Notes' },
+  { stem: 'card-detail-13-32-10' },
+  { stem: 'card-detail-lisbon-travel', title: 'Lisbon Long Weekend: Alfama, Tiles, and Sea Air' },
+  { stem: 'card-detail-13-32-18' },
+  { stem: 'card-detail-sourdough-recipe', title: 'A Slow Sunday Sourdough Recipe' },
+  { stem: 'card-detail-13-32-26' },
+  { stem: 'card-detail-athens-tavernas', title: 'Athens Tavernas for the First Night' },
+  { stem: 'card-detail-13-32-47' },
+  { stem: 'card-detail-bao-london', title: 'BAO: Quick Soho Dinner Before a Film' },
+  { stem: 'card-detail-13-32-55' },
+  { stem: 'card-detail-manteca-pasta', title: 'Manteca: Handmade Pasta in Shoreditch' },
+  { stem: 'card-detail-13-33-07' },
+  { stem: 'card-detail-paris-hotels', title: 'Paris Hotel Shortlist Near the Left Bank' },
+  { stem: 'card-detail-13-33-13' },
+  { stem: 'card-detail-tate-modern', title: 'Tate Modern and a South Bank Walk' },
+  { stem: 'card-detail-13-33-23' },
+  { stem: 'card-detail-v-and-a-exhibition', title: 'V&A museum exhibition' },
+  { stem: 'card-detail-13-33-40' },
+  { stem: 'card-detail-13-33-45' },
+  { stem: 'card-detail-13-34-19' },
+  { stem: 'card-detail-13-34-29' },
+  { stem: 'card-detail-13-34-43' },
+  { stem: 'card-detail-13-35-06' },
+  { stem: 'card-detail-13-35-11' },
+].map((screen) => ({
+  ...screen,
+  alt: 'title' in screen && screen.title
+    ? `${t.a11y.cardScreenAlt}: ${screen.title}`
+    : t.a11y.cardScreenAlt,
+}));
 
 // Each screen owns a 3s window; the full loop is screens × 3s. The
 // crossfade keyframe is generated from this count so the timing stays
