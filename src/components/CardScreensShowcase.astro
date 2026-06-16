@@ -11,46 +11,117 @@ const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
+// Localized screenshot sets live in per-locale subfolders
+// (e.g. images/card-screens/ja/...) captured from the simulator with the
+// matching DebugTestDataSeeder showcase pack. English keeps the original
+// flat folder. Each locale's set reuses the same stems so the rotation
+// stays identical across languages.
+const locale = Astro.currentLocale ?? 'en';
+const localeDir = locale === 'en' ? '' : `${locale}/`;
+
+// On-screen titles baked into the curated screenshots, per locale, so the
+// alt text matches what the image actually shows. Raw timestamped captures
+// fall back to the generic localized alt.
+const curatedTitles: Record<string, Record<string, string>> = {
+  en: {
+    'card-detail-living-room': 'Living Room Inspiration',
+    'card-detail-eames-archive': 'Eames Archive: Furniture Notes',
+    'card-detail-lisbon-travel': 'Lisbon Long Weekend: Alfama, Tiles, and Sea Air',
+    'card-detail-sourdough-recipe': 'A Slow Sunday Sourdough Recipe',
+    'card-detail-athens-tavernas': 'Athens Tavernas for the First Night',
+    'card-detail-bao-london': 'BAO: Quick Soho Dinner Before a Film',
+    'card-detail-manteca-pasta': 'Manteca: Handmade Pasta in Shoreditch',
+    'card-detail-paris-hotels': 'Paris Hotel Shortlist Near the Left Bank',
+    'card-detail-tate-modern': 'Tate Modern and a South Bank Walk',
+    'card-detail-v-and-a-exhibition': 'V&A museum exhibition',
+  },
+  ja: {
+    'card-detail-living-room': '温かみのあるリビング照明のアイデア',
+    'card-detail-eames-archive': 'イームズ・アーカイブ：家具のメモとビジュアル資料',
+    'card-detail-lisbon-travel': 'リスボン3連休：アルファマとタイルと海風',
+    'card-detail-sourdough-recipe': 'ゆっくり発酵させる週末のカンパーニュ',
+    'card-detail-athens-tavernas': 'アテネ初日の夜に行きたいタベルナ',
+    'card-detail-bao-london': '映画の前に：渋谷でさっと食べる包子',
+    'card-detail-manteca-pasta': '渋谷のパスタと自家製シャルキュトリー',
+    'card-detail-paris-hotels': 'パリ：左岸エリアのホテル候補リスト',
+    'card-detail-tate-modern': '東京都現代美術館と清澄白河の散歩',
+    'card-detail-v-and-a-exhibition': '国立新美術館：今月見ておきたい企画展',
+  },
+  es: {
+    'card-detail-living-room': 'Ideas de iluminación cálida para el salón',
+    'card-detail-eames-archive': 'Archivo Eames: notas de mobiliario y referencias visuales',
+    'card-detail-lisbon-travel': 'Puente en Lisboa: Alfama, azulejos y aire de mar',
+    'card-detail-sourdough-recipe': 'Pan de masa madre para un domingo lento',
+    'card-detail-athens-tavernas': 'Tabernas de Atenas para la primera noche',
+    'card-detail-bao-london': 'Baos en Malasaña: cena rápida antes del cine',
+    'card-detail-manteca-pasta': 'Pasta fresca y embutido casero en Chueca',
+    'card-detail-paris-hotels': 'París: lista corta de hoteles por la orilla izquierda',
+    'card-detail-tate-modern': 'Reina Sofía y paseo por el Retiro',
+    'card-detail-v-and-a-exhibition': 'Exposiciones del Thyssen para este mes',
+  },
+  de: {
+    'card-detail-living-room': 'Ideen für warmes Licht im Wohnzimmer',
+    'card-detail-eames-archive': 'Eames-Archiv: Möbelnotizen und Bildreferenzen',
+    'card-detail-lisbon-travel': 'Langes Wochenende in Lissabon: Alfama, Azulejos, Meeresluft',
+    'card-detail-sourdough-recipe': 'Sauerteigbrot für einen langsamen Sonntag',
+    'card-detail-athens-tavernas': 'Athener Tavernen für den ersten Abend',
+    'card-detail-bao-london': 'Bao in Friedrichshain: schnelles Abendessen vorm Kino',
+    'card-detail-manteca-pasta': 'Handgemachte Pasta und Hauswurst in Neukölln',
+    'card-detail-paris-hotels': 'Paris: Hotel-Shortlist für das Rive Gauche',
+    'card-detail-tate-modern': 'Hamburger Bahnhof und Spaziergang am Spreebogen',
+    'card-detail-v-and-a-exhibition': 'Ausstellungen im Kunstgewerbemuseum diesen Monat',
+  },
+  fr: {
+    'card-detail-living-room': "Idées d'éclairage chaleureux pour le salon",
+    'card-detail-eames-archive': 'Archives Eames : notes de mobilier et références visuelles',
+    'card-detail-lisbon-travel': 'Grand week-end à Lisbonne : Alfama, azulejos et air marin',
+    'card-detail-sourdough-recipe': 'Pain au levain pour un dimanche tranquille',
+    'card-detail-athens-tavernas': "Tavernes d'Athènes pour le premier soir",
+    'card-detail-bao-london': 'Bao à Belleville : dîner rapide avant le cinéma',
+    'card-detail-manteca-pasta': 'Pâtes maison et charcuterie artisanale vers Oberkampf',
+    'card-detail-paris-hotels': "Londres : liste courte d'hôtels autour de Bloomsbury",
+    'card-detail-tate-modern': 'Centre Pompidou puis promenade le long de la Seine',
+    'card-detail-v-and-a-exhibition': 'Expositions du musée des Arts décoratifs ce mois-ci',
+  },
+};
+
+const titles = curatedTitles[locale] ?? curatedTitles.en;
+
 // All available card screenshots, with the curated, human-named shots
 // interleaved through the raw captures so recognisable cards are
 // spread across the loop rather than clustered. The Hampstead Heath
 // shot is intentionally excluded.
-//
-// `title` is the on-screen English card title baked into the screenshot;
-// it is appended to the localized alt text so screen readers still get
-// the specific card name. When localized screenshots are captured,
-// per-locale stems/titles can replace these.
 const screens = [
-  { stem: 'card-detail-living-room', title: 'Living Room Inspiration' },
-  { stem: 'card-detail-13-32-02' },
-  { stem: 'card-detail-eames-archive', title: 'Eames Archive: Furniture Notes' },
-  { stem: 'card-detail-13-32-10' },
-  { stem: 'card-detail-lisbon-travel', title: 'Lisbon Long Weekend: Alfama, Tiles, and Sea Air' },
-  { stem: 'card-detail-13-32-18' },
-  { stem: 'card-detail-sourdough-recipe', title: 'A Slow Sunday Sourdough Recipe' },
-  { stem: 'card-detail-13-32-26' },
-  { stem: 'card-detail-athens-tavernas', title: 'Athens Tavernas for the First Night' },
-  { stem: 'card-detail-13-32-47' },
-  { stem: 'card-detail-bao-london', title: 'BAO: Quick Soho Dinner Before a Film' },
-  { stem: 'card-detail-13-32-55' },
-  { stem: 'card-detail-manteca-pasta', title: 'Manteca: Handmade Pasta in Shoreditch' },
-  { stem: 'card-detail-13-33-07' },
-  { stem: 'card-detail-paris-hotels', title: 'Paris Hotel Shortlist Near the Left Bank' },
-  { stem: 'card-detail-13-33-13' },
-  { stem: 'card-detail-tate-modern', title: 'Tate Modern and a South Bank Walk' },
-  { stem: 'card-detail-13-33-23' },
-  { stem: 'card-detail-v-and-a-exhibition', title: 'V&A museum exhibition' },
-  { stem: 'card-detail-13-33-40' },
-  { stem: 'card-detail-13-33-45' },
-  { stem: 'card-detail-13-34-19' },
-  { stem: 'card-detail-13-34-29' },
-  { stem: 'card-detail-13-34-43' },
-  { stem: 'card-detail-13-35-06' },
-  { stem: 'card-detail-13-35-11' },
-].map((screen) => ({
-  ...screen,
-  alt: 'title' in screen && screen.title
-    ? `${t.a11y.cardScreenAlt}: ${screen.title}`
+  'card-detail-living-room',
+  'card-detail-13-32-02',
+  'card-detail-eames-archive',
+  'card-detail-13-32-10',
+  'card-detail-lisbon-travel',
+  'card-detail-13-32-18',
+  'card-detail-sourdough-recipe',
+  'card-detail-13-32-26',
+  'card-detail-athens-tavernas',
+  'card-detail-13-32-47',
+  'card-detail-bao-london',
+  'card-detail-13-32-55',
+  'card-detail-manteca-pasta',
+  'card-detail-13-33-07',
+  'card-detail-paris-hotels',
+  'card-detail-13-33-13',
+  'card-detail-tate-modern',
+  'card-detail-13-33-23',
+  'card-detail-v-and-a-exhibition',
+  'card-detail-13-33-40',
+  'card-detail-13-33-45',
+  'card-detail-13-34-19',
+  'card-detail-13-34-29',
+  'card-detail-13-34-43',
+  'card-detail-13-35-06',
+  'card-detail-13-35-11',
+].map((stem) => ({
+  stem,
+  alt: titles[stem]
+    ? `${t.a11y.cardScreenAlt}: ${titles[stem]}`
     : t.a11y.cardScreenAlt,
 }));
 
@@ -93,9 +164,9 @@ const crossfadeKeyframes = `@keyframes card-screen-crossfade {
             class="cycling-screen"
             style={`animation: card-screen-crossfade ${cycleSeconds}s linear infinite; animation-delay: -${index * screenWindowSeconds}s;`}
           >
-            <source srcset={`${base}images/card-screens/${screen.stem}.webp`} type="image/webp" />
+            <source srcset={`${base}images/card-screens/${localeDir}${screen.stem}.webp`} type="image/webp" />
             <img
-              src={`${base}images/card-screens/${screen.stem}.png`}
+              src={`${base}images/card-screens/${localeDir}${screen.stem}.png`}
               alt={screen.alt}
               loading="lazy"
               decoding="async"

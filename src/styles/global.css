@@ -1042,9 +1042,6 @@ html.boot .site-header-chrome {
     overflow: visible;
   }
 
-  .bento-img--collections {
-    width: 104%;
-  }
   .bento-img--search {
     width: 76%;
     right: -8px;

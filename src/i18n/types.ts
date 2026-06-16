@@ -31,6 +31,21 @@ export interface TranslationSchema {
     home: { title: string; meta: string };
     recipes: { title: string; meta: string };
   };
+  bentoMocks: {
+    editMenu: {
+      cover: string;
+      tags: string;
+      title: string;
+      description: string;
+    };
+    export: {
+      title: string;
+      importTitle: string;
+      importBody: string;
+      exportTitle: string;
+      exportBody: string;
+    };
+  };
   header: {
     features: string;
     support: string;

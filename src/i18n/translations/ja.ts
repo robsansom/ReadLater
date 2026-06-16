@@ -33,6 +33,21 @@ export const ja: TranslationSchema = {
     home: { title: 'リビングのインスピレーション', meta: '9件の保存 • Read Later' },
     recipes: { title: 'お気に入りのレストラン', meta: '23件の保存 • Read Later' }
   },
+  bentoMocks: {
+    editMenu: {
+      cover: '表紙の編集',
+      tags: 'タグの編集',
+      title: 'タイトルの編集',
+      description: '説明の編集'
+    },
+    export: {
+      title: 'インポートとエクスポート',
+      importTitle: '保存をインポート',
+      importBody: 'JSONまたはCSV。新しい保存を追加し、すでにあるものはスキップします。',
+      exportTitle: 'ライブラリのエクスポート',
+      exportBody: 'CSV、JSON、Markdownから選択できます。'
+    }
+  },
   header: {
     features: '機能',
     support: 'サポート',

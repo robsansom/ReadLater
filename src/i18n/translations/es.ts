@@ -33,6 +33,21 @@ export const es: TranslationSchema = {
     home: { title: 'Inspiración para el salón', meta: '9 elementos • Read Later' },
     recipes: { title: 'Restaurantes favoritos', meta: '23 elementos • Read Later' }
   },
+  bentoMocks: {
+    editMenu: {
+      cover: 'Editar portada',
+      tags: 'Editar etiquetas',
+      title: 'Editar título',
+      description: 'Editar descripción'
+    },
+    export: {
+      title: 'Importar y Exportar',
+      importTitle: 'Importar guardados',
+      importBody: 'JSON o CSV. Añade guardados nuevos y omite los que ya tienes.',
+      exportTitle: 'Exportar biblioteca',
+      exportBody: 'Elige CSV, JSON o Markdown.'
+    }
+  },
   header: {
     features: 'Funciones',
     support: 'Soporte',
