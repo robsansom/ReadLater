@@ -102,6 +102,7 @@ const bentoLayouts = [
               'reveal',
               `reveal-delay-${(i % 4) + 1}`,
               'bento-card relative rounded-[24px] p-6 sm:p-7 overflow-hidden min-h-[320px] sm:min-h-[360px]',
+              `bento-card--${item.key}`,
               isSplit
                 ? 'flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10'
                 : 'flex flex-col',
@@ -297,6 +298,18 @@ const bentoLayouts = [
     width: auto;
   }
 
+  .bento-card--shareExtension,
+  .bento-card--collections {
+    min-height: 300px;
+  }
+
+  @media (min-width: 640px) {
+    .bento-card--shareExtension,
+    .bento-card--collections {
+      min-height: 340px;
+    }
+  }
+
   .bento-img {
     height: auto;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -308,7 +321,7 @@ const bentoLayouts = [
   /* Share extension art. Keep the cropped top flush with the tile, but
      inset the sides slightly so the device has a little breathing room. */
   .bento-img--share {
-    width: 94%;
+    width: 88%;
     max-width: none;
     margin: -1.5rem auto 0;
     filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.10));
@@ -337,8 +350,8 @@ const bentoLayouts = [
     position: relative;
     transform-origin: center bottom;
     width: min(100%, 380px);
-    height: 268px;
-    margin-bottom: 24px;
+    height: 232px;
+    margin-bottom: 16px;
   }
   .bmk-collection {
     position: absolute;
@@ -366,7 +379,7 @@ const bentoLayouts = [
     left: 2%;
   }
   .bmk-collection--front {
-    top: 84px;
+    top: 42px;
     left: 22%;
     z-index: 2;
     box-shadow:
@@ -502,10 +515,10 @@ const bentoLayouts = [
   @media (max-width: 639px) {
     .bento-mock-collections {
       --mock-scale: 0.92;
-      height: 252px;
+      height: 220px;
     }
     .bmk-collection--front {
-      top: 78px;
+      top: 40px;
     }
   }
 </style>
