@@ -14,17 +14,17 @@ export const site = {
    * Until the app is live, this is a placeholder anchor (`#app-store`)
    * so we don't ship a broken external link to the App Store. The
    * moment we have a real product URL of the form
-   * `https://apps.apple.com/app/read-later/id1234567890`, replace this
+   * `https://apps.apple.com/app/find-later/id1234567890`, replace this
    * value and every CTA on the site (Hero, Footer, App Store badge,
    * Header download pill) will point to it automatically.
    */
   appStoreUrl: '#app-store',
 
   /** Address shown on legal pages and support contact CTAs. */
-  supportEmail: 'support@getreadlater.com',
+  supportEmail: 'support@getfindlater.com',
 
   /** Marketing display name used in headers, page titles and meta tags. */
-  appName: 'Read Later',
+  appName: 'Find Later',
 } as const;
 
 export type SiteConfig = typeof site;

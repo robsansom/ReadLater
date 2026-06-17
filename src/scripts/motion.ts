@@ -1,5 +1,5 @@
 /**
- * Read Later landing-page motion. No framework. ~2kb gzipped.
+ * Find Later landing-page motion. No framework. ~2kb gzipped.
  *
  * Handles:
  *  - .reveal                    fade + lift when entering viewport

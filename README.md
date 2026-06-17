@@ -1,6 +1,6 @@
 # Pouch — Landing Site
 
-The marketing landing page for **Pouch — Read Later**, the privacy-first iOS app for saving links and organising them into collections.
+The marketing landing page for **Pouch — Find Later**, the privacy-first iOS app for saving links and organising them into collections.
 
 Built with [Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com), styled to mirror the App Store screenshots, and deployed via GitHub Pages.
 

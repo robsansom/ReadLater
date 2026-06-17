@@ -1,6 +1,6 @@
 # Changelog
 
-A running record of work on the Pouch — Read Later marketing site (Astro + Tailwind, deployed to GitHub Pages at `getreadlater.com`).
+A running record of work on the Pouch — Find Later marketing site (Astro + Tailwind, deployed to GitHub Pages at `getfindlater.com`).
 
 This is a human-readable summary; the authoritative history is the git log.
 
@@ -33,7 +33,7 @@ This is a human-readable summary; the authoritative history is the git log.
 - Strengthened the mobile hero and showcase visuals; improved mobile homepage composition.
 - Refined iPad showcase, homepage positioning, and bookmark showcase copy.
 - Strengthened the Privacy Policy and Terms; updated the support contact and launch checklist.
-- Initial commit: Read Later marketing site.
+- Initial commit: Find Later marketing site.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 import { site } from '../config/site';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { useTranslations } from '../i18n/utils';
+import { getLocalizedHashPath, useTranslations } from '../i18n/utils';
 import LanguageSelector from './LanguageSelector.astro';
 
 const currentLocale = Astro.currentLocale || 'en';
@@ -11,6 +11,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
+const featuresHref = getLocalizedHashPath(currentLocale, '/', 'features');
 ---
 
 <header
@@ -39,11 +40,11 @@ const isExternalAppStoreUrl = site.appStoreUrl.startsWith('http');
         />
       </span>
       <span class="header-wordmark text-[17px] font-semibold tracking-[-0.015em] text-pouch-text group-hover:text-pouch-red transition-colors">
-        Read Later
+        Find Later
       </span>
     </a>
     <nav class="flex items-center gap-1.5 text-[13.5px]">
-      <a href={getRelativeLocaleUrl(currentLocale, '/#features')} class="header-link hidden sm:inline-flex px-3 py-2 text-pouch-textSoft hover:text-pouch-text">{t.header.features}</a>
+      <a href={featuresHref} class="header-link hidden sm:inline-flex px-3 py-2 text-pouch-textSoft hover:text-pouch-text">{t.header.features}</a>
       <a href={getRelativeLocaleUrl(currentLocale, '/support')} class="header-link hidden md:inline-flex px-3 py-2 text-pouch-textSoft hover:text-pouch-text">{t.header.support}</a>
       <span class="inline-flex mr-1 sm:mr-2">
         <LanguageSelector />

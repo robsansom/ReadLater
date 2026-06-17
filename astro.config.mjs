@@ -2,10 +2,10 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-// Hosted on GitHub Pages behind the custom domain getreadlater.com
+// Hosted on GitHub Pages behind the custom domain getfindlater.com
 // (see public/CNAME). Custom domain means no `base` path is needed.
 export default defineConfig({
-  site: 'https://getreadlater.com',
+  site: 'https://getfindlater.com',
   trailingSlash: 'ignore',
   i18n: {
     defaultLocale: 'en',

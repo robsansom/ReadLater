@@ -21,7 +21,7 @@ export function getLocalizedPath(locale: string, pathname: string) {
   let cleanPath = pathname;
   
   // If the pathname includes a base URL, strip it first, clean the path, then re-apply it.
-  // In our case, the config site: 'https://getreadlater.com' is hosted behind custom domain, so base is '/' (no prefix).
+  // In our case, the config site: 'https://getfindlater.com' is hosted behind custom domain, so base is '/' (no prefix).
   const localePattern = /^\/(fr|es|de|ja)(\/|$)/;
   if (localePattern.test(cleanPath)) {
     cleanPath = cleanPath.replace(localePattern, '/');
@@ -36,4 +36,13 @@ export function getLocalizedPath(locale: string, pathname: string) {
   // e.g., getRelativeLocaleUrl('fr', '/support') -> '/fr/support'
   // getRelativeLocaleUrl('en', '/support') -> '/support' (since en is default and prefixDefaultLocale is false)
   return getRelativeLocaleUrl(locale, cleanPath);
+}
+
+export function getLocalizedHashPath(locale: string, pathname: string, hash: string) {
+  const localizedPath = getLocalizedPath(locale, pathname);
+  const normalizedPath = localizedPath.endsWith('/')
+    ? localizedPath
+    : `${localizedPath}/`;
+  const normalizedHash = hash.startsWith('#') ? hash : `#${hash}`;
+  return `${normalizedPath}${normalizedHash}`;
 }

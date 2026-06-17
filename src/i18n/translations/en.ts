@@ -2,36 +2,36 @@ import type { TranslationSchema } from '../types';
 
 export const en: TranslationSchema = {
   meta: {
-    title: 'Read Later - Save anything. Find everything.',
+    title: 'Find Later - Save anything. Find everything.',
     description: 'A beautifully simple place for the articles, videos, recipes and ideas you want to find again. For iPhone and iPad.'
   },
   a11y: {
     selectLanguage: 'Select language',
-    homeLink: 'Read Later home',
-    appStoreLinkLabel: 'Download Read Later on the App Store',
+    homeLink: 'Find Later home',
+    appStoreLinkLabel: 'Download Find Later on the App Store',
     appStoreBadgeAlt: 'Download on the App Store',
-    cardScreenAlt: 'A saved card in Read Later'
+    cardScreenAlt: 'A saved card in Find Later'
   },
   mockSaveCards: {
     restaurant: {
       title: 'Luca: Clerkenwell Pasta for Friday Night',
       tag1: 'Restaurants',
       tag2: 'London',
-      aria: 'A saved restaurant card in the Read Later library',
+      aria: 'A saved restaurant card in the Find Later library',
       coverAlt: 'Sunset over a lakeside restaurant terrace, the cover of a saved restaurant card'
     },
     livingRoom: {
       title: 'Living Room Lighting Ideas That Feel Warm',
       tag1: 'Home',
       tag2: 'Decor',
-      aria: 'A saved interior-design card in the Read Later library',
+      aria: 'A saved interior-design card in the Find Later library',
       coverAlt: 'A bright living room with armchairs and an arched floor lamp, the cover of a saved interior-design card'
     }
   },
   mockCollectionCards: {
-    travel: { title: 'Places to Visit in Italy', meta: '14 saves • Read Later' },
-    home: { title: 'Living Room Inspiration', meta: '9 saves • Read Later' },
-    recipes: { title: 'Favourite Restaurants', meta: '23 saves • Read Later' }
+    travel: { title: 'Places to Visit in Italy', meta: '14 saves • Find Later' },
+    home: { title: 'Living Room Inspiration', meta: '9 saves • Find Later' },
+    recipes: { title: 'Favourite Restaurants', meta: '23 saves • Find Later' }
   },
   bentoMocks: {
     editMenu: {
@@ -58,7 +58,7 @@ export const en: TranslationSchema = {
     taglineHeadline: 'Save it.',
     taglineHeadlineDim: 'Close the tab.',
     copyright: 'Made with care in the UK.',
-    appleAffiliation: 'Read Later is an independent app, not affiliated with Apple Inc.',
+    appleAffiliation: 'Find Later is an independent app, not affiliated with Apple Inc.',
     appleTrademarks: 'Apple, the Apple logo, iPhone and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.',
     product: 'Product',
     company: 'Company',
@@ -71,7 +71,7 @@ export const en: TranslationSchema = {
     terms: 'Terms'
   },
   hero: {
-    eyebrow: 'Read Later',
+    eyebrow: 'Find Later',
     title: 'Save anything.',
     titleAccent: 'Find everything.',
     body: 'A beautifully simple place for the articles, videos, recipes and ideas you want to find again.',
@@ -82,35 +82,35 @@ export const en: TranslationSchema = {
     headline: 'Save it now,',
     headlineAccent: 'find it later.',
     body: 'One tap from any app saves it with its title, cover and source - search, filter and find your way back, fast.',
-    imageAlt: 'The Read Later iPhone app showing the dark-mode library of saved articles and ideas, with photos, titles and tags.'
+    imageAlt: 'The Find Later iPhone app showing the dark-mode library of saved articles and ideas, with photos, titles and tags.'
   },
   showcaseLibrary: {
     eyebrow: 'Your library',
     headline: 'Every save.',
     headlineAccent: 'Uniquely yours.',
     body: 'Everything you save lands as a full card with its cover image, source and notes. Edit the title, swap the cover, retag it, or regenerate it with Apple Intelligence - every part of the card is yours to shape.',
-    imageAlt: 'The Read Later iPhone app showing detail cards for different saved items, cycling through recipes, travel planning, walks, design ideas, and restaurants.'
+    imageAlt: 'The Find Later iPhone app showing detail cards for different saved items, cycling through recipes, travel planning, walks, design ideas, and restaurants.'
   },
   showcaseIpad: {
     eyebrow: 'iPad',
     headline: 'Your library,',
     headlineAccent: 'expanded.',
     body: 'Designed for iPad from the start. See more of your library at once, with collections, previews and your saves arranged for the wider screen.',
-    imageAltDark: 'The Read Later iPad app in dark mode, showing a Collections home with Quick Jump shortcuts, Recently Added cards and Favorites.',
-    imageAltLight: 'The Read Later iPad app in light mode, showing a Collections home with Quick Jump shortcuts, Recently Added cards and Favorites.'
+    imageAltDark: 'The Find Later iPad app in dark mode, showing a Collections home with Quick Jump shortcuts, Recently Added cards and Favorites.',
+    imageAltLight: 'The Find Later iPad app in light mode, showing a Collections home with Quick Jump shortcuts, Recently Added cards and Favorites.'
   },
   showcaseCollections: {
     eyebrow: 'Collections',
     headline: 'Share',
     headlineAccent: 'collections.',
-    body: 'Group your saves into trips, projects, wishlists or moodboards. Share a snapshot of a whole collection so someone else can add their own copy to Read Later.',
+    body: 'Group your saves into trips, projects, wishlists or moodboards. Share a snapshot of a whole collection so someone else can add their own copy to Find Later.',
     imageAlt: 'Three collection share cards fanning out, showing how saved items can be grouped and sent to someone else.'
   },
   splitHeadlinePrivacy: {
     eyebrow: 'Privacy',
     first: 'Private,',
     second: 'by default.',
-    body: 'No account. No tracking. No third-party SDKs. What happens in Read Later stays on your iPhone, your iPad, and your own iCloud.'
+    body: 'No account. No tracking. No third-party SDKs. What happens in Find Later stays on your iPhone, your iPad, and your own iCloud.'
   },
   bento: {
     eyebrow: 'Features',
@@ -121,7 +121,7 @@ export const en: TranslationSchema = {
       eyebrow: 'Share Extension',
       title: 'Save from anywhere',
       body: 'Save articles, videos, posts, PDFs and useful attachments from the apps you already use. One tap, straight to your library.',
-      alt: 'iOS share sheet with AirDrop contacts and the Read Later save action'
+      alt: 'iOS share sheet with AirDrop contacts and the Find Later save action'
     },
     collections: {
       eyebrow: 'Collections',
@@ -167,7 +167,7 @@ export const en: TranslationSchema = {
     siri: {
       eyebrow: 'Siri',
       title: 'Just ask',
-      body: 'Ask Siri to save a link in Read Later, search Read Later, or tell you what you saved.'
+      body: 'Ask Siri to save a link in Find Later, search Find Later, or tell you what you saved.'
     },
     shortcuts: {
       eyebrow: 'Shortcuts',
@@ -184,13 +184,13 @@ export const en: TranslationSchema = {
     }
   },
   privacyPage: {
-    metaTitle: 'Privacy Policy - Read Later',
-    metaDescription: 'How Read Later handles your data. No account. No tracking. Your data lives on your device and syncs through your own iCloud.',
+    metaTitle: 'Privacy Policy - Find Later',
+    metaDescription: 'How Find Later handles your data. No account. No tracking. Your data lives on your device and syncs through your own iCloud.',
     eyebrow: 'Legal',
     headline: 'Privacy.',
     headlineDim: 'By default.',
     lastUpdated: '10 June 2026',
-    intro: 'This policy explains, in plain language, what Read Later does with your information. The headline is short: it doesn’t do much, on purpose.',
+    intro: 'This policy explains, in plain language, what Find Later does with your information. The headline is short: it doesn’t do much, on purpose.',
     promisesTitle: 'Our promises',
     promises: [
       'No account. There is nothing for you to sign up to.',
@@ -203,15 +203,15 @@ export const en: TranslationSchema = {
     sections: [
       {
         title: 'Who we are',
-        body: 'Read Later (the "App") is published by an independent developer based in the United Kingdom ("we", "us"). We are the controller of personal information you choose to send us, such as a support email. For privacy questions, contact support@getreadlater.com.'
+        body: 'Find Later (the "App") is published by an independent developer based in the United Kingdom ("we", "us"). We are the controller of personal information you choose to send us, such as a support email. For privacy questions, contact support@getfindlater.com.'
       },
       {
         title: 'The short version',
-        body: 'The App has no Read Later account or developer-operated content server. We do not receive your saved links, notes, tags or Collections. That library is stored on your device and, if enabled, in Apple’s iCloud. The App has no advertising, cross-app tracking or third-party analytics SDK. Information you send to support, technical website logs handled by our hosting provider, and information Apple provides to developers are described below.'
+        body: 'The App has no Find Later account or developer-operated content server. We do not receive your saved links, notes, tags or Collections. That library is stored on your device and, if enabled, in Apple’s iCloud. The App has no advertising, cross-app tracking or third-party analytics SDK. Information you send to support, technical website logs handled by our hosting provider, and information Apple provides to developers are described below.'
       },
       {
         title: 'What data the app handles, and where it lives',
-        body: 'On your device, URLs, titles, thumbnails, notes, tags and read state are stored using Apple’s standard storage frameworks. If iCloud sync is available and enabled, Apple’s CloudKit stores and synchronises that content under your Apple ID. Read Later does not operate a separate database containing your library or provide us with an interface for reading it. If you share a Collection, Apple processes a snapshot so the recipient can add an independent copy to their own library. The copies are not collaborative and later changes do not sync between them.'
+        body: 'On your device, URLs, titles, thumbnails, notes, tags and read state are stored using Apple’s standard storage frameworks. If iCloud sync is available and enabled, Apple’s CloudKit stores and synchronises that content under your Apple ID. Find Later does not operate a separate database containing your library or provide us with an interface for reading it. If you share a Collection, Apple processes a snapshot so the recipient can add an independent copy to their own library. The copies are not collaborative and later changes do not sync between them.'
       },
       {
         title: 'Information available through Apple',
@@ -219,15 +219,15 @@ export const en: TranslationSchema = {
       },
       {
         title: 'No tracking, no advertising',
-        body: 'Read Later does not track you across apps and websites, request App Tracking Transparency permission, or show advertising. We do not sell personal information. We disclose information only to service providers where needed to operate the website and support channel, when you ask us to, or where disclosure is required by law.'
+        body: 'Find Later does not track you across apps and websites, request App Tracking Transparency permission, or show advertising. We do not sell personal information. We disclose information only to service providers where needed to operate the website and support channel, when you ask us to, or where disclosure is required by law.'
       },
       {
         title: 'Fetching the pages you save',
-        body: 'When the App fetches information about a link, your device may contact that website or another service shown to you in the App. The destination can receive ordinary network information such as your IP address and request details under its own privacy terms. Opening a link may use Apple’s in-app browser technology. Read Later does not use these requests to create a browsing history on our systems.'
+        body: 'When the App fetches information about a link, your device may contact that website or another service shown to you in the App. The destination can receive ordinary network information such as your IP address and request details under its own privacy terms. Opening a link may use Apple’s in-app browser technology. Find Later does not use these requests to create a browsing history on our systems.'
       },
       {
         title: 'Purchases and subscriptions',
-        body: 'Read Later Plus is sold through Apple’s App Store using StoreKit. Apple processes payments and makes purchase and entitlement information available to the App so it can unlock paid features. We do not receive your full payment-card details. Apple handles billing, refunds and taxes under the Apple Media Services Terms.'
+        body: 'Find Later Plus is sold through Apple’s App Store using StoreKit. Apple processes payments and makes purchase and entitlement information available to the App so it can unlock paid features. We do not receive your full payment-card details. Apple handles billing, refunds and taxes under the Apple Media Services Terms.'
       },
       {
         title: 'Website and support',
@@ -247,11 +247,11 @@ export const en: TranslationSchema = {
       },
       {
         title: 'Children',
-        body: 'Read Later is intended for a general audience and is not directed specifically at children. We do not ask users to create an account or provide an age. If a child emails support, we use the message only to respond and manage the request. A parent or guardian can contact us about that correspondence.'
+        body: 'Find Later is intended for a general audience and is not directed specifically at children. We do not ask users to create an account or provide an age. If a child emails support, we use the message only to respond and manage the request. A parent or guardian can contact us about that correspondence.'
       },
       {
         title: 'Your rights',
-        body: 'Depending on where you live, you may have rights over personal information we control, including rights to access, correct, erase, restrict or object to its use, and to complain to a regulator. These rights are subject to legal limits. Contact support@getreadlater.com to make a request. UK residents may complain to the Information Commissioner’s Office at ico.org.uk. Content stored only on your device or in your iCloud account should be managed through the App, your device or Apple because we do not hold a copy.'
+        body: 'Depending on where you live, you may have rights over personal information we control, including rights to access, correct, erase, restrict or object to its use, and to complain to a regulator. These rights are subject to legal limits. Contact support@getfindlater.com to make a request. UK residents may complain to the Information Commissioner’s Office at ico.org.uk. Content stored only on your device or in your iCloud account should be managed through the App, your device or Apple because we do not hold a copy.'
       },
       {
         title: 'Changes to this policy',
@@ -259,13 +259,13 @@ export const en: TranslationSchema = {
       },
       {
         title: 'Contact',
-        body: 'Questions or requests about privacy can be sent to support@getreadlater.com. A postal address for formal correspondence is available on request.'
+        body: 'Questions or requests about privacy can be sent to support@getfindlater.com. A postal address for formal correspondence is available on request.'
       }
     ]
   },
   supportPage: {
-    metaTitle: 'Support - Read Later',
-    metaDescription: 'Help and answers for Read Later. Save anything. Find everything.',
+    metaTitle: 'Support - Find Later',
+    metaDescription: 'Help and answers for Find Later. Save anything. Find everything.',
     eyebrow: 'Support',
     headline: 'We’re here',
     headlineDim: 'to help.',
@@ -276,7 +276,7 @@ export const en: TranslationSchema = {
     faqs: [
       {
         q: 'How do I save something?',
-        a: 'Open it in Safari or any other app, tap the iOS Share button, then choose Read Later. Add tags, a collection or a note in the sheet, then Save. It lands in your library instantly.'
+        a: 'Open it in Safari or any other app, tap the iOS Share button, then choose Find Later. Add tags, a collection or a note in the sheet, then Save. It lands in your library instantly.'
       },
       {
         q: 'How do I create a collection?',
@@ -284,41 +284,41 @@ export const en: TranslationSchema = {
       },
       {
         q: 'How does sharing a collection work?',
-        a: 'Open a collection, tap the menu, then Share Collection. This sends a snapshot that the other person can add to their own Read Later library. Their copy is independent: changes, additions and removals made by either person do not update the other copy, and collections are not collaborative.'
+        a: 'Open a collection, tap the menu, then Share Collection. This sends a snapshot that the other person can add to their own Find Later library. Their copy is independent: changes, additions and removals made by either person do not update the other copy, and collections are not collaborative.'
       },
       {
-        q: 'Does Read Later sync between my iPhone and iPad?',
-        a: 'Yes. If you’re signed in to iCloud, Read Later syncs your library between your devices via CloudKit automatically. There’s no setting to switch on - it just works.'
+        q: 'Does Find Later sync between my iPhone and iPad?',
+        a: 'Yes. If you’re signed in to iCloud, Find Later syncs your library between your devices via CloudKit automatically. There’s no setting to switch on - it just works.'
       },
       {
         q: 'I’ve hit the 100-save limit. What now?',
-        a: 'The free tier covers up to 100 saves. To go beyond that, upgrade to Read Later Plus from Settings - either £12.99 per year or £34.99 once for lifetime access. Plus also unlocks unlimited collections.'
+        a: 'The free tier covers up to 100 saves. To go beyond that, upgrade to Find Later Plus from Settings - either £12.99 per year or £34.99 once for lifetime access. Plus also unlocks unlimited collections.'
       },
       {
         q: 'How do I cancel a Plus subscription?',
-        a: 'Subscriptions are managed by Apple. Open iOS Settings, tap your name, then Subscriptions, find Read Later and tap Cancel. You’ll keep Plus access until the end of the current billing period.'
+        a: 'Subscriptions are managed by Apple. Open iOS Settings, tap your name, then Subscriptions, find Find Later and tap Cancel. You’ll keep Plus access until the end of the current billing period.'
       },
       {
         q: 'Can I get a refund?',
-        a: 'Refunds for App Store purchases are handled by Apple. Visit reportaproblem.apple.com, sign in, find the Read Later purchase and request a refund.'
+        a: 'Refunds for App Store purchases are handled by Apple. Visit reportaproblem.apple.com, sign in, find the Find Later purchase and request a refund.'
       },
       {
         q: 'I’ve found a bug. What do I do?',
-        a: 'Email support@getreadlater.com with a short description of what you were doing, what you expected and what actually happened. A screenshot helps a lot.'
+        a: 'Email support@getfindlater.com with a short description of what you were doing, what you expected and what actually happened. A screenshot helps a lot.'
       }
     ]
   },
   termsPage: {
-    metaTitle: 'Terms of Use - Read Later',
-    metaDescription: 'The plain-English terms that apply when you download or use the Read Later iOS app.',
+    metaTitle: 'Terms of Use - Find Later',
+    metaDescription: 'The plain-English terms that apply when you download or use the Find Later iOS app.',
     eyebrow: 'Legal',
     headline: 'Terms',
     headlineDim: 'of Use.',
     lastUpdated: '10 June 2026',
-    intro: 'These terms apply when you download or use the Read Later iOS app (“Read Later”, “we”, “us”). By using Read Later you agree to them, together with Apple’s Standard EULA. They are written in plain English on purpose.',
+    intro: 'These terms apply when you download or use the Find Later iOS app (“Find Later”, “we”, “us”). By using Find Later you agree to them, together with Apple’s Standard EULA. They are written in plain English on purpose.',
     tldrTitle: 'In short',
     tldr: [
-      'Read Later is licensed to you for personal use on your Apple devices.',
+      'Find Later is licensed to you for personal use on your Apple devices.',
       'Free and paid features, prices and availability are shown in the App before purchase.',
       'Apple takes payment, handles refunds and manages your subscription.',
       'Your saved content is yours - we don’t access it, claim it or train AI on it.',
@@ -327,11 +327,11 @@ export const en: TranslationSchema = {
     sections: [
       {
         title: '1. About these terms',
-        body: 'These terms apply when you download or use the Read Later iOS app ("Read Later", the "App"). The App is published by an independent UK-based developer ("we", "us"). By using Read Later, you agree to these terms together with Apple’s Licensed Application End User Licence Agreement (the "Apple EULA"). They are written in plain English on purpose.'
+        body: 'These terms apply when you download or use the Find Later iOS app ("Find Later", the "App"). The App is published by an independent UK-based developer ("we", "us"). By using Find Later, you agree to these terms together with Apple’s Licensed Application End User Licence Agreement (the "Apple EULA"). They are written in plain English on purpose.'
       },
       {
         title: '2. The licence',
-        body: 'Read Later is licensed (not sold) to you for personal, non-commercial use on any Apple device you own or control, on the terms of the Apple EULA. Where these terms add to the Apple EULA - for example on our intellectual property, refunds, or the law that governs disputes between us - these terms apply alongside it.',
+        body: 'Find Later is licensed (not sold) to you for personal, non-commercial use on any Apple device you own or control, on the terms of the Apple EULA. Where these terms add to the Apple EULA - for example on our intellectual property, refunds, or the law that governs disputes between us - these terms apply alongside it.',
         link: {
           label: 'Read the Apple Standard EULA',
           href: 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/'
@@ -339,7 +339,7 @@ export const en: TranslationSchema = {
       },
       {
         title: '3. Free and Plus',
-        body: 'Read Later may offer free and paid features. The current limits and features are shown in the App and App Store listing. Paid features may include higher or unlimited limits and Collection sharing. Features can vary by device, operating-system version and territory.'
+        body: 'Find Later may offer free and paid features. The current limits and features are shown in the App and App Store listing. Paid features may include higher or unlimited limits and Collection sharing. Features can vary by device, operating-system version and territory.'
       },
       {
         title: '4. Subscriptions and one-time purchase',
@@ -347,7 +347,7 @@ export const en: TranslationSchema = {
       },
       {
         title: '5. Refunds',
-        body: 'All purchases of Read Later are processed by Apple under the Apple Media Services Terms. Apple, not us, handles refunds. You can request a refund via reportaproblem.apple.com or your Apple ID purchase history. We have no power to issue refunds directly and we do not store your payment details.',
+        body: 'All purchases of Find Later are processed by Apple under the Apple Media Services Terms. Apple, not us, handles refunds. You can request a refund via reportaproblem.apple.com or your Apple ID purchase history. We have no power to issue refunds directly and we do not store your payment details.',
         link: {
           label: 'Request an Apple refund',
           href: 'https://reportaproblem.apple.com'
@@ -363,7 +363,7 @@ export const en: TranslationSchema = {
       },
       {
         title: '7. Your content is yours',
-        body: 'Everything you save in Read Later - links, tags, notes, the structure of your Collections - belongs to you. We claim no licence over it and we never access it. You are responsible for what you choose to save: please don’t use Read Later to save or share material that is illegal, that infringes someone else’s rights, or that is intended to harass other people. Respect the terms of the websites whose content you save.'
+        body: 'Everything you save in Find Later - links, tags, notes, the structure of your Collections - belongs to you. We claim no licence over it and we never access it. You are responsible for what you choose to save: please don’t use Find Later to save or share material that is illegal, that infringes someone else’s rights, or that is intended to harass other people. Respect the terms of the websites whose content you save.'
       },
       {
         title: '8. Sync and sharing',
@@ -371,19 +371,19 @@ export const en: TranslationSchema = {
       },
       {
         title: '9. Acceptable use',
-        body: 'Please don’t (a) reverse engineer, decompile or modify Read Later except where the law or Apple EULA expressly permits it; (b) bypass purchase or entitlement checks; (c) use sharing to spam, harass or distribute unlawful content; or (d) interfere with the App or another person’s use of it. Where technically and legally possible, we may restrict access to affected features for a serious breach.'
+        body: 'Please don’t (a) reverse engineer, decompile or modify Find Later except where the law or Apple EULA expressly permits it; (b) bypass purchase or entitlement checks; (c) use sharing to spam, harass or distribute unlawful content; or (d) interfere with the App or another person’s use of it. Where technically and legally possible, we may restrict access to affected features for a serious breach.'
       },
       {
         title: '10. Third-party content',
-        body: 'Read Later displays previews of, and opens, links from third-party websites and services. We don’t host, modify, screen or endorse that content, and we aren’t responsible for its accuracy, legality, availability or terms. Your use of any linked site is subject to that site’s own rules.'
+        body: 'Find Later displays previews of, and opens, links from third-party websites and services. We don’t host, modify, screen or endorse that content, and we aren’t responsible for its accuracy, legality, availability or terms. Your use of any linked site is subject to that site’s own rules.'
       },
       {
         title: '11. Our intellectual property',
-        body: 'The Read Later name, design, icons, source code and brand are owned by us or used under licence. The licence in section 2 does not transfer those rights to you. You may mention the App or link to getreadlater.com in reviews, articles or social posts, but must not imply our endorsement or sponsorship without permission.'
+        body: 'The Find Later name, design, icons, source code and brand are owned by us or used under licence. The licence in section 2 does not transfer those rights to you. You may mention the App or link to getfindlater.com in reviews, articles or social posts, but must not imply our endorsement or sponsorship without permission.'
       },
       {
         title: '12. Apple’s role (Apple-Enabled Software)',
-        body: 'Read Later is distributed through Apple’s App Store, which adds the following terms required by Apple:',
+        body: 'Find Later is distributed through Apple’s App Store, which adds the following terms required by Apple:',
         bullets: [
           'These terms are entered into between you and us, not Apple. Apple is not a party to them and has no responsibility for the App or its content.',
           'We (not Apple) are solely responsible for the App, its content and any maintenance or support. Apple has no obligation to provide any maintenance or support in relation to the App.',
@@ -396,7 +396,7 @@ export const en: TranslationSchema = {
       },
       {
         title: '13. Disclaimers',
-        body: 'Read Later is provided "as is" and "as available". To the maximum extent permitted by law, we disclaim all warranties, conditions and representations not expressly stated here, including any warranty that the App will be uninterrupted, error-free, or that metadata fetched from third-party sites will be accurate. Nothing in these terms removes or limits any non-excludable rights you have under the UK Consumer Rights Act 2015 or similar consumer-protection laws.'
+        body: 'Find Later is provided "as is" and "as available". To the maximum extent permitted by law, we disclaim all warranties, conditions and representations not expressly stated here, including any warranty that the App will be uninterrupted, error-free, or that metadata fetched from third-party sites will be accurate. Nothing in these terms removes or limits any non-excludable rights you have under the UK Consumer Rights Act 2015 or similar consumer-protection laws.'
       },
       {
         title: '14. Limitation of liability',
@@ -416,7 +416,7 @@ export const en: TranslationSchema = {
       },
       {
         title: '18. Contact',
-        body: 'Questions about these terms? Email support@getreadlater.com. A UK postal address is available on request for formal correspondence.'
+        body: 'Questions about these terms? Email support@getfindlater.com. A UK postal address is available on request for formal correspondence.'
       }
     ]
   }

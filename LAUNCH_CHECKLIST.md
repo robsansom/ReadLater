@@ -1,10 +1,10 @@
 # Launch Checklist
 
-Outstanding items for the Read Later website and App Store launch.
+Outstanding items for the Find Later website and App Store launch.
 
 ## Required before App Store launch
 
-- [ ] Confirm `support@getreadlater.com` receives mail through the Eas ily alias.
+- [ ] Confirm `support@getfindlater.com` receives mail through the Eas ily alias.
 - [ ] Decide how support replies will be sent without exposing a personal address.
 - [ ] Replace the placeholder `#app-store` link in `src/config/site.ts` with the final App Store product URL.
 - [ ] Confirm the published prices and limits: 50 free saves, GBP 12.99/year, and GBP 34.99 lifetime.
@@ -18,7 +18,7 @@ Outstanding items for the Read Later website and App Store launch.
 
 ## Website and domain
 
-- [ ] Wait for `getreadlater.com` and `www.getreadlater.com` DNS records to propagate.
+- [ ] Wait for `getfindlater.com` and `www.getfindlater.com` DNS records to propagate.
 - [ ] In GitHub Pages, run the domain check again after DNS propagation.
 - [ ] Enable and verify HTTPS after GitHub provisions the certificate.
 - [ ] Test the custom domain on iPhone, iPad, and desktop.
