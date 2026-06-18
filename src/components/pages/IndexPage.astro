@@ -8,7 +8,9 @@ import BentoGrid from '../BentoGrid.astro';
 import PartOfIphone from '../PartOfIphone.astro';
 import { useTranslations } from '../../i18n/utils';
 
-const t = useTranslations(Astro.currentLocale);
+const currentLocale = Astro.currentLocale ?? 'en';
+const t = useTranslations(currentLocale);
+const ipadImagePrefix = currentLocale === 'en' ? 'ipad' : `ipad/${currentLocale}/ipad-collections`;
 ---
 
 <Base
@@ -51,8 +53,8 @@ const t = useTranslations(Astro.currentLocale);
     headline={t.showcaseIpad.headline}
     headlineAccent={t.showcaseIpad.headlineAccent}
     body={t.showcaseIpad.body}
-    imageDark="ipad-dark"
-    imageLight="ipad-light"
+    imageDark={`${ipadImagePrefix}-dark`}
+    imageLight={`${ipadImagePrefix}-light`}
     altDark={t.showcaseIpad.imageAltDark}
     altLight={t.showcaseIpad.imageAltLight}
   />
