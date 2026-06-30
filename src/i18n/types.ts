@@ -10,6 +10,12 @@ export interface TranslationSchema {
     appStoreBadgeAlt: string;
     cardScreenAlt: string;
   };
+  cta: {
+    /** Full badge replacement shown until the App Store URL is live. */
+    comingSoon: string;
+    /** Compact form for the header pill and footer link. */
+    comingSoonShort: string;
+  };
   mockSaveCards: {
     restaurant: {
       title: string;

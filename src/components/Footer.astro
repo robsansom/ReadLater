@@ -34,14 +34,18 @@ const featuresHref = getLocalizedHashPath(currentLocale, '/', 'features');
         <ul class="mt-4 space-y-2.5">
           <li><a href={featuresHref} class="hover:text-pouch-red transition-colors">{t.footer.features}</a></li>
           <li>
-            <a
-              href={site.appStoreUrl}
-              target={isExternalAppStoreUrl ? '_blank' : undefined}
-              rel={isExternalAppStoreUrl ? 'noopener' : undefined}
-              class="hover:text-pouch-red transition-colors"
-            >
-              {t.footer.download}
-            </a>
+            {isExternalAppStoreUrl ? (
+              <a
+                href={site.appStoreUrl}
+                target="_blank"
+                rel="noopener"
+                class="hover:text-pouch-red transition-colors"
+              >
+                {t.footer.download}
+              </a>
+            ) : (
+              <span class="text-pouch-textMuted cursor-default">{t.cta.comingSoonShort}</span>
+            )}
           </li>
         </ul>
       </div>

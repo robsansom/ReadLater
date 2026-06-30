@@ -12,6 +12,10 @@ export const fr: TranslationSchema = {
     appStoreBadgeAlt: 'Télécharger dans l’App Store',
     cardScreenAlt: 'Une carte enregistrée dans Find Later'
   },
+  cta: {
+    comingSoon: 'Bientôt sur l’App Store',
+    comingSoonShort: 'Bientôt disponible'
+  },
   mockSaveCards: {
     restaurant: {
       title: 'Luca : pâtes à Clerkenwell pour vendredi soir',
